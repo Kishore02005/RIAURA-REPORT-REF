@@ -1,0 +1,1 @@
+(function(){var s=localStorage.getItem('ahims-theme');if(s)document.documentElement.setAttribute('data-theme',s);})();

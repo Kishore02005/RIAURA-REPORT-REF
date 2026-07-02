@@ -1,0 +1,1537 @@
+// ==========================================================================
+// NEUROSPECTRUM — DESIGN TOKENS v2
+// Premium editorial cognitive intelligence platform
+// ==========================================================================
+
+// ---------------------------------------------------------------------------
+// Color System — Refined Editorial Palette
+// ---------------------------------------------------------------------------
+
+$color-white: #FFFFFF;
+$color-black: #0D0D0D;
+$color-bg-primary: #FAFAF9;
+$color-bg-page: #FFFFFF;
+$color-bg-subtle: #F5F5F4;
+$color-bg-muted: #EDEDEB;
+$color-bg-card: #FFFFFF;
+
+// Text hierarchy — warm grays
+$color-text-primary: #1C1917;
+$color-text-secondary: #44403C;
+$color-text-tertiary: #78716C;
+$color-text-inverse: #FAFAF9;
+
+// Border — subtle warmth
+$color-border-subtle: #F0EFED;
+$color-border-default: #E7E5E4;
+$color-border-strong: #D6D3D1;
+
+// Domain semantic colors — refined, sophisticated
+$domain-attention: #4A7BF7;
+$domain-memory: #6C5CE7;
+$domain-processing: #00B894;
+$domain-reasoning: #A29BFE;
+$domain-decision-integrity: #636E72;
+$domain-emotional-intelligence: #E17055;
+$domain-originality: #FDCB6E;
+$domain-metacognition: #B2BEC3;
+
+// Tier colors — muted sophistication
+$tier-distinguished: #2D3436;
+$tier-high: #00B894;
+$tier-moderate: #FDCB6E;
+$tier-developing: #B2BEC3;
+
+// Accent — deep blue
+$accent-primary: #1A365D;
+$accent-primary-soft: rgba(26, 54, 93, 0.06);
+
+// Status
+$status-success: #00B894;
+$status-warning: #FDCB6E;
+$status-neutral: #B2BEC3;
+
+// ---------------------------------------------------------------------------
+// Typography — Editorial Scale
+// ---------------------------------------------------------------------------
+
+$font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+$font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+$font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+// Display scale
+$display-6xl: 4.5rem;    // 72px
+$display-5xl: 3.5rem;    // 56px
+$display-4xl: 2.75rem;   // 44px
+$display-3xl: 2.25rem;   // 36px
+
+// Body scale
+$text-xl: 1.25rem;       // 20px
+$text-lg: 1.125rem;      // 18px
+$text-base: 1rem;        // 16px
+$text-sm: 0.875rem;      // 14px
+$text-xs: 0.75rem;       // 12px
+
+// Weight
+$weight-regular: 400;
+$weight-medium: 500;
+$weight-semibold: 600;
+$weight-bold: 700;
+
+// Line height
+$leading-tight: 1.15;
+$leading-snug: 1.3;
+$leading-normal: 1.6;
+$leading-relaxed: 1.75;
+
+// Tracking
+$tracking-tight: -0.03em;
+$tracking-normal: 0;
+$tracking-wide: 0.04em;
+$tracking-wider: 0.08em;
+
+// ---------------------------------------------------------------------------
+// Spacing
+// ---------------------------------------------------------------------------
+
+$space-1: 0.25rem;
+$space-2: 0.5rem;
+$space-3: 0.75rem;
+$space-4: 1rem;
+$space-5: 1.25rem;
+$space-6: 1.5rem;
+$space-8: 2rem;
+$space-10: 2.5rem;
+$space-12: 3rem;
+$space-16: 4rem;
+$space-20: 5rem;
+$space-24: 6rem;
+$space-32: 8rem;
+
+// ---------------------------------------------------------------------------
+// Layout
+// ---------------------------------------------------------------------------
+
+$page-max-width: 900px;
+$nav-width: 240px;
+$page-padding: $space-16;
+
+// ---------------------------------------------------------------------------
+// Borders
+// ---------------------------------------------------------------------------
+
+$radius-sm: 6px;
+$radius-md: 10px;
+$radius-lg: 14px;
+$radius-xl: 20px;
+$radius-full: 9999px;
+
+// ---------------------------------------------------------------------------
+// Shadows — ethereal depth
+// ---------------------------------------------------------------------------
+
+$shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.03);
+$shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.03);
+$shadow-md: 0 4px 12px rgba(0, 0, 0, 0.05);
+$shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.06);
+$shadow-card: 0 1px 3px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.02);
+
+// ---------------------------------------------------------------------------
+// Transitions
+// ---------------------------------------------------------------------------
+
+$ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+$transition-fast: 150ms $ease-out;
+$transition-base: 300ms $ease-out;
+$transition-slow: 500ms $ease-out;
+
+// ==========================================================================
+// RESET
+// ==========================================================================
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: $font-body;
+  font-size: $text-base;
+  line-height: $leading-normal;
+  color: $color-text-primary;
+  background: $color-bg-primary;
+}
+
+img, svg { display: block; max-width: 100%; }
+a { color: $accent-primary; text-decoration: none; }
+
+// ==========================================================================
+// PAGE SYSTEM
+// ==========================================================================
+
+.report-shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+// Navigation sidebar
+.nav-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: $nav-width;
+  height: 100vh;
+  background: $color-bg-page;
+  border-right: 1px solid $color-border-subtle;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  overflow-y: auto;
+  padding: $space-8 0;
+
+  &__brand {
+    padding: 0 $space-6;
+    margin-bottom: $space-8;
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+
+    img {
+      width: 32px;
+      height: 32px;
+      border-radius: $radius-sm;
+    }
+
+    span {
+      font-size: $text-sm;
+      font-weight: $weight-semibold;
+      color: $color-text-primary;
+    }
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: $space-1;
+    padding: 0 $space-3;
+  }
+
+  &__item {
+    display: block;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    padding: $space-2 $space-3;
+    border-radius: $radius-md;
+    font-size: $text-xs;
+    font-weight: $weight-medium;
+    color: $color-text-tertiary;
+    transition: all $transition-fast;
+    cursor: pointer;
+    text-decoration: none;
+    border: 1px solid transparent;
+
+    &:hover {
+      background: $color-bg-subtle;
+      color: $color-text-secondary;
+    }
+
+    &.is-active {
+      background: $accent-primary-soft;
+      color: $accent-primary;
+      font-weight: $weight-semibold;
+      border-color: rgba($accent-primary, 0.08);
+    }
+  }
+
+  &__number {
+    font-family: $font-mono;
+    font-size: 10px;
+    font-weight: $weight-semibold;
+    color: $color-text-tertiary;
+    min-width: 18px;
+  }
+
+  &__footer {
+    margin-top: auto;
+    padding: $space-6;
+    border-top: 1px solid $color-border-subtle;
+    font-size: $text-xs;
+    color: $color-text-tertiary;
+    line-height: $leading-relaxed;
+  }
+}
+
+// Page container
+.page-container {
+  margin-left: $nav-width;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.page {
+  width: 100%;
+  max-width: $page-max-width;
+  min-height: 100vh;
+  padding: $page-padding $space-12;
+  background: $color-bg-page;
+  display: none;
+  flex-direction: column;
+
+  &.is-active {
+    display: flex;
+  }
+}
+
+// ==========================================================================
+// PAGE HEADER PATTERN
+// ==========================================================================
+
+.page-header {
+  margin-bottom: $space-12;
+
+  &__label {
+    font-family: $font-mono;
+    font-size: $text-xs;
+    font-weight: $weight-semibold;
+    text-transform: uppercase;
+    letter-spacing: $tracking-wider;
+    color: $color-text-tertiary;
+    margin-bottom: $space-3;
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: $display-3xl;
+    font-weight: $weight-bold;
+    line-height: $leading-tight;
+    letter-spacing: $tracking-tight;
+    color: $color-text-primary;
+    margin-bottom: $space-4;
+  }
+
+  &__subtitle {
+    font-size: $text-lg;
+    color: $color-text-tertiary;
+    line-height: $leading-relaxed;
+    max-width: 560px;
+  }
+}
+
+// ==========================================================================
+// PAGE FOOTER PATTERN
+// ==========================================================================
+
+.page-footer {
+  margin-top: auto;
+  padding-top: $space-8;
+  border-top: 1px solid $color-border-subtle;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: $space-8;
+
+  &__identity {
+    font-size: $text-xs;
+    color: $color-text-tertiary;
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+  }
+
+  &__page-num {
+    font-family: $font-mono;
+    font-size: $text-xs;
+    font-weight: $weight-semibold;
+    color: $color-text-tertiary;
+  }
+}
+
+// ==========================================================================
+// COVER PAGE
+// ==========================================================================
+
+.cover-page {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+
+  &__motif {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    opacity: 0.04;
+    pointer-events: none;
+  }
+
+  &__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-8;
+  }
+
+  &__report-label {
+    font-family: $font-mono;
+    font-size: $text-xs;
+    font-weight: $weight-semibold;
+    text-transform: uppercase;
+    letter-spacing: $tracking-wider;
+    color: $color-text-tertiary;
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: $display-6xl;
+    font-weight: $weight-bold;
+    line-height: $leading-tight;
+    letter-spacing: $tracking-tight;
+    color: $color-text-primary;
+    max-width: 600px;
+  }
+
+  &__participant {
+    font-family: $font-display;
+    font-size: $display-4xl;
+    font-weight: $weight-bold;
+    line-height: $leading-tight;
+    color: $accent-primary;
+  }
+
+  &__score-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-3;
+    margin-top: $space-8;
+  }
+
+  &__score-value {
+    font-family: $font-display;
+    font-size: $display-5xl;
+    font-weight: $weight-bold;
+    line-height: 1;
+    color: $color-text-primary;
+    letter-spacing: $tracking-tight;
+  }
+
+  &__score-label {
+    font-size: $text-xs;
+    font-weight: $weight-semibold;
+    text-transform: uppercase;
+    letter-spacing: $tracking-wider;
+    color: $color-text-tertiary;
+  }
+
+  &__tagline {
+    font-size: $text-lg;
+    font-style: italic;
+    color: $color-text-tertiary;
+    max-width: 440px;
+    margin-top: $space-4;
+    line-height: $leading-relaxed;
+  }
+
+  &__metadata {
+    display: flex;
+    align-items: center;
+    gap: $space-6;
+    margin-top: $space-10;
+    font-size: $text-sm;
+    color: $color-text-tertiary;
+  }
+
+  &__meta-divider {
+    width: 3px;
+    height: 3px;
+    border-radius: $radius-full;
+    background: $color-border-strong;
+  }
+}
+
+// ==========================================================================
+// PARTICIPANT OVERVIEW
+// ==========================================================================
+
+.overview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-8;
+  margin-bottom: $space-10;
+
+  &__identity {
+    display: flex;
+    flex-direction: column;
+    gap: $space-6;
+    padding: $space-8;
+    background: $color-bg-subtle;
+    border-radius: $radius-lg;
+  }
+
+  &__identity-label {
+    font-size: $text-xs;
+    font-weight: $weight-semibold;
+    text-transform: uppercase;
+    letter-spacing: $tracking-wider;
+    color: $color-text-tertiary;
+  }
+
+  &__identity-name {
+    font-family: $font-display;
+    font-size: $display-3xl;
+    font-weight: $weight-bold;
+    color: $color-text-primary;
+    line-height: $leading-tight;
+  }
+
+  &__identity-meta {
+    display: flex;
+    gap: $space-6;
+    font-size: $text-sm;
+    color: $color-text-tertiary;
+  }
+
+  &__score-summary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: $space-4;
+    padding: $space-8;
+    background: $color-bg-page;
+    border: 1px solid $color-border-default;
+    border-radius: $radius-lg;
+  }
+}
+
+.highlight-badges {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $space-4;
+  margin-top: $space-8;
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+    padding: $space-5;
+    background: $color-bg-page;
+    border: 1px solid $color-border-default;
+    border-radius: $radius-md;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+    }
+  }
+
+  &__label {
+    font-size: $text-xs;
+    font-weight: $weight-semibold;
+    text-transform: uppercase;
+    letter-spacing: $tracking-wider;
+    color: $color-text-tertiary;
+  }
+
+  &__value {
+    font-family: $font-display;
+    font-size: $text-xl;
+    font-weight: $weight-bold;
+    color: $color-text-primary;
+  }
+}
+
+// ==========================================================================
+// EXECUTIVE SUMMARY
+// ==========================================================================
+
+.executive-narrative {
+  font-size: $text-lg;
+  line-height: $leading-relaxed;
+  color: $color-text-secondary;
+  max-width: 640px;
+  margin-bottom: $space-10;
+}
+
+.insight-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-6;
+  margin-bottom: $space-10;
+
+  &__item {
+    padding: $space-6;
+    background: $color-bg-subtle;
+    border-radius: $radius-lg;
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+  }
+
+  &__title {
+    font-size: $text-xs;
+    font-weight: $weight-semibold;
+    text-transform: uppercase;
+    letter-spacing: $tracking-wider;
+    color: $color-text-tertiary;
+  }
+
+  &__body {
+    font-size: $text-sm;
+    line-height: $leading-relaxed;
+    color: $color-text-secondary;
+  }
+}
+
+.closing-takeaway {
+  padding: $space-8;
+  background: $accent-primary-soft;
+  border-radius: $radius-lg;
+  border-left: 3px solid $accent-primary;
+
+  &__text {
+    font-size: $text-base;
+    line-height: $leading-relaxed;
+    color: $color-text-secondary;
+    font-style: italic;
+  }
+}
+
+// ==========================================================================
+// PERFORMANCE DASHBOARD — Constellation
+// ==========================================================================
+
+.constellation-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  max-width: 480px;
+  margin: 0 auto $space-10;
+
+  &__svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__node {
+    cursor: pointer;
+    transition: transform $transition-fast;
+
+    &:hover {
+      transform: scale(1.15);
+    }
+  }
+
+  &__label {
+    font-family: $font-body;
+    font-size: 10px;
+    font-weight: $weight-medium;
+    fill: $color-text-tertiary;
+    text-anchor: middle;
+  }
+
+  &__value {
+    font-family: $font-mono;
+    font-size: 11px;
+    font-weight: $weight-bold;
+    fill: $color-text-primary;
+    text-anchor: middle;
+  }
+}
+
+.interpretation-callout {
+  padding: $space-6;
+  background: $color-bg-subtle;
+  border-radius: $radius-lg;
+  border-left: 3px solid $color-border-strong;
+
+  &__text {
+    font-size: $text-sm;
+    line-height: $leading-relaxed;
+    color: $color-text-secondary;
+  }
+}
+
+// ==========================================================================
+// BRAIN ASSOCIATIONS
+// ==========================================================================
+
+.brain-layout {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: $space-12;
+  align-items: start;
+
+  &__canvas {
+    position: sticky;
+    top: $space-8;
+    background: $color-bg-page;
+    border: 1px solid $color-border-default;
+    border-radius: $radius-xl;
+    padding: $space-8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__canvas-title {
+    font-size: $text-xs;
+    font-weight: $weight-semibold;
+    text-transform: uppercase;
+    letter-spacing: $tracking-wider;
+    color: $color-text-tertiary;
+    margin-bottom: $space-6;
+    text-align: center;
+  }
+
+  &__brain-asset {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  &__notes {
+    display: flex;
+    flex-direction: column;
+    gap: $space-4;
+  }
+}
+
+.association-note {
+  display: flex;
+  gap: $space-5;
+  padding: $space-5;
+  background: $color-bg-subtle;
+  border-radius: $radius-md;
+  transition: background $transition-fast;
+
+  &:hover {
+    background: $color-bg-muted;
+  }
+
+  &__marker {
+    width: 36px;
+    height: 36px;
+    border-radius: $radius-md;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: $color-white;
+    font-size: $text-xs;
+    font-weight: $weight-bold;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: $space-1;
+    flex: 1;
+  }
+
+  &__domain {
+    font-size: $text-sm;
+    font-weight: $weight-semibold;
+    color: $color-text-primary;
+  }
+
+  &__region {
+    font-size: $text-xs;
+    color: $color-text-tertiary;
+    font-style: italic;
+  }
+
+  &__description {
+    font-size: $text-sm;
+    line-height: $leading-relaxed;
+    color: $color-text-secondary;
+    margin-top: $space-1;
+  }
+
+  &__behavior {
+    font-size: $text-xs;
+    color: $color-text-tertiary;
+    margin-top: $space-1;
+  }
+}
+
+// ==========================================================================
+// DOMAIN MATRIX
+// ==========================================================================
+
+.domain-matrix {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $space-4;
+
+  &__card {
+    padding: $space-6;
+    background: $color-bg-page;
+    border: 1px solid $color-border-default;
+    border-radius: $radius-lg;
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow $transition-base, border-color $transition-base;
+
+    &:hover {
+      box-shadow: $shadow-md;
+      border-color: $color-border-strong;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+    }
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__name {
+    font-size: $text-sm;
+    font-weight: $weight-semibold;
+    color: $color-text-primary;
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+  }
+
+  &__score {
+    font-family: $font-mono;
+    font-size: $text-lg;
+    font-weight: $weight-bold;
+    color: $color-text-primary;
+  }
+
+  &__bar {
+    height: 4px;
+    background: $color-bg-muted;
+    border-radius: $radius-full;
+    overflow: hidden;
+
+    &-fill {
+      height: 100%;
+      border-radius: $radius-full;
+      transition: width $transition-slow;
+    }
+  }
+
+  &__description {
+    font-size: $text-xs;
+    color: $color-text-tertiary;
+    line-height: $leading-relaxed;
+  }
+
+  &__interpretation {
+    font-size: $text-sm;
+    color: $color-text-secondary;
+    line-height: $leading-relaxed;
+  }
+
+  &__tier {
+    display: inline-flex;
+    padding: $space-1 $space-3;
+    border-radius: $radius-full;
+    font-size: 10px;
+    font-weight: $weight-semibold;
+    text-transform: uppercase;
+    letter-spacing: $tracking-wider;
+    width: fit-content;
+  }
+}
+
+// ==========================================================================
+// PATTERN ANALYSIS
+// ==========================================================================
+
+.pattern-grid {
+  display: flex;
+  flex-direction: column;
+  gap: $space-6;
+  margin-bottom: $space-10;
+
+  &__item {
+    padding: $space-8;
+    background: $color-bg-page;
+    border: 1px solid $color-border-default;
+    border-radius: $radius-lg;
+    display: flex;
+    flex-direction: column;
+    gap: $space-4;
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: $text-xl;
+    font-weight: $weight-bold;
+    color: $color-text-primary;
+  }
+
+  &__domains {
+    display: flex;
+    gap: $space-2;
+    flex-wrap: wrap;
+  }
+
+  &__domain-tag {
+    display: inline-flex;
+    padding: $space-1 $space-3;
+    border-radius: $radius-full;
+    font-size: $text-xs;
+    font-weight: $weight-medium;
+    color: $color-white;
+  }
+
+  &__description {
+    font-size: $text-base;
+    line-height: $leading-relaxed;
+    color: $color-text-secondary;
+  }
+
+  &__significance {
+    font-size: $text-sm;
+    color: $color-text-tertiary;
+    font-style: italic;
+    padding-left: $space-4;
+    border-left: 2px solid $color-border-default;
+  }
+}
+
+.pattern-summary {
+  padding: $space-8;
+  background: $color-bg-subtle;
+  border-radius: $radius-lg;
+
+  &__text {
+    font-size: $text-base;
+    line-height: $leading-relaxed;
+    color: $color-text-secondary;
+  }
+}
+
+// ==========================================================================
+// PERSONA
+// ==========================================================================
+
+.persona-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-12;
+  align-items: start;
+
+  &__narrative {
+    display: flex;
+    flex-direction: column;
+    gap: $space-6;
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: $display-3xl;
+    font-weight: $weight-bold;
+    color: $color-text-primary;
+    line-height: $leading-tight;
+  }
+
+  &__descriptor {
+    font-size: $text-sm;
+    font-weight: $weight-semibold;
+    text-transform: uppercase;
+    letter-spacing: $tracking-wider;
+    color: $color-text-tertiary;
+  }
+
+  &__text {
+    font-size: $text-base;
+    line-height: $leading-relaxed;
+    color: $color-text-secondary;
+  }
+
+  &__traits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-2;
+  }
+
+  &__trait {
+    display: inline-flex;
+    padding: $space-2 $space-4;
+    background: $color-bg-subtle;
+    border-radius: $radius-full;
+    font-size: $text-xs;
+    font-weight: $weight-medium;
+    color: $color-text-secondary;
+  }
+
+  &__motif {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $color-bg-subtle;
+    border-radius: $radius-xl;
+    padding: $space-10;
+    min-height: 360px;
+  }
+}
+
+// ==========================================================================
+// INTERPERSONAL INSIGHTS
+// ==========================================================================
+
+.interpersonal-grid {
+  display: flex;
+  flex-direction: column;
+  gap: $space-6;
+
+  &__item {
+    padding: $space-8;
+    background: $color-bg-page;
+    border: 1px solid $color-border-default;
+    border-radius: $radius-lg;
+    display: flex;
+    flex-direction: column;
+    gap: $space-4;
+  }
+
+  &__category {
+    font-size: $text-xs;
+    font-weight: $weight-semibold;
+    text-transform: uppercase;
+    letter-spacing: $tracking-wider;
+    color: $color-text-tertiary;
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: $text-xl;
+    font-weight: $weight-bold;
+    color: $color-text-primary;
+  }
+
+  &__description {
+    font-size: $text-base;
+    line-height: $leading-relaxed;
+    color: $color-text-secondary;
+  }
+
+  &__cues {
+    display: flex;
+    gap: $space-2;
+    flex-wrap: wrap;
+  }
+
+  &__cue {
+    display: inline-flex;
+    padding: $space-1 $space-3;
+    background: $accent-primary-soft;
+    border-radius: $radius-full;
+    font-size: $text-xs;
+    font-weight: $weight-medium;
+    color: $accent-primary;
+  }
+}
+
+// ==========================================================================
+// DEVELOPMENT STRATEGY
+// ==========================================================================
+
+.roadmap {
+  display: flex;
+  flex-direction: column;
+  gap: $space-8;
+
+  &__stage {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: $space-6;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 39px;
+      top: 48px;
+      bottom: -32px;
+      width: 2px;
+      background: $color-border-default;
+    }
+
+    &:last-child::before {
+      display: none;
+    }
+  }
+
+  &__marker {
+    width: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-2;
+
+    &-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: $radius-full;
+      background: $accent-primary;
+      border: 3px solid $color-bg-page;
+      box-shadow: 0 0 0 2px $accent-primary;
+      position: relative;
+      z-index: 1;
+    }
+
+    &-label {
+      font-size: $text-xs;
+      font-weight: $weight-semibold;
+      text-transform: uppercase;
+      letter-spacing: $tracking-wider;
+      color: $color-text-tertiary;
+    }
+  }
+
+  &__content {
+    padding: $space-6;
+    background: $color-bg-page;
+    border: 1px solid $color-border-default;
+    border-radius: $radius-lg;
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+  }
+
+  &__focus {
+    font-size: $text-sm;
+    font-weight: $weight-semibold;
+    color: $accent-primary;
+  }
+
+  &__description {
+    font-size: $text-sm;
+    line-height: $leading-relaxed;
+    color: $color-text-secondary;
+  }
+
+  &__actions {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+
+    li {
+      font-size: $text-sm;
+      color: $color-text-secondary;
+      padding-left: $space-4;
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 8px;
+        width: 6px;
+        height: 6px;
+        border-radius: $radius-full;
+        background: $accent-primary;
+        opacity: 0.4;
+      }
+    }
+  }
+
+  &__priority {
+    display: inline-flex;
+    padding: $space-1 $space-3;
+    border-radius: $radius-full;
+    font-size: 10px;
+    font-weight: $weight-semibold;
+    text-transform: uppercase;
+    letter-spacing: $tracking-wider;
+    width: fit-content;
+
+    &--high {
+      background: rgba($accent-primary, 0.08);
+      color: $accent-primary;
+    }
+    &--medium {
+      background: rgba($status-warning, 0.12);
+      color: #92400E;
+    }
+    &--standard {
+      background: rgba($status-neutral, 0.12);
+      color: $color-text-tertiary;
+    }
+  }
+}
+
+// ==========================================================================
+// RECOMMENDED LABS
+// ==========================================================================
+
+.labs-grid {
+  display: flex;
+  flex-direction: column;
+  gap: $space-6;
+
+  &__item {
+    display: grid;
+    grid-template-columns: 60px 1fr auto;
+    gap: $space-6;
+    padding: $space-8;
+    background: $color-bg-page;
+    border: 1px solid $color-border-default;
+    border-radius: $radius-lg;
+    transition: box-shadow $transition-base;
+
+    &:hover {
+      box-shadow: $shadow-md;
+    }
+  }
+
+  &__rank {
+    width: 48px;
+    height: 48px;
+    border-radius: $radius-full;
+    background: $color-bg-subtle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: $font-display;
+    font-size: $text-xl;
+    font-weight: $weight-bold;
+    color: $color-text-primary;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+  }
+
+  &__domain-tag {
+    display: inline-flex;
+    padding: $space-1 $space-3;
+    border-radius: $radius-full;
+    font-size: 10px;
+    font-weight: $weight-semibold;
+    text-transform: uppercase;
+    letter-spacing: $tracking-wider;
+    color: $color-white;
+    width: fit-content;
+  }
+
+  &__title {
+    font-size: $text-lg;
+    font-weight: $weight-semibold;
+    color: $color-text-primary;
+  }
+
+  &__description {
+    font-size: $text-sm;
+    line-height: $leading-relaxed;
+    color: $color-text-secondary;
+  }
+
+  &__lab {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: $space-1;
+    max-width: 200px;
+  }
+
+  &__lab-name {
+    font-size: $text-sm;
+    font-weight: $weight-semibold;
+    color: $color-text-primary;
+  }
+
+  &__lab-desc {
+    font-size: $text-xs;
+    color: $color-text-tertiary;
+    line-height: $leading-normal;
+  }
+
+  &__rationale {
+    font-size: $text-xs;
+    color: $color-text-tertiary;
+    line-height: $leading-normal;
+    margin-top: $space-2;
+    font-style: italic;
+  }
+}
+
+// ==========================================================================
+// METHODOLOGY
+// ==========================================================================
+
+.methodology-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-4;
+
+  &__item {
+    padding: $space-6;
+    background: $color-bg-subtle;
+    border-radius: $radius-lg;
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+  }
+
+  &__title {
+    font-size: $text-sm;
+    font-weight: $weight-semibold;
+    color: $color-text-primary;
+  }
+
+  &__content {
+    font-size: $text-sm;
+    line-height: $leading-relaxed;
+    color: $color-text-secondary;
+  }
+}
+
+// ==========================================================================
+// BACK COVER
+// ==========================================================================
+
+.back-cover {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-8;
+  }
+
+  &__statement {
+    font-family: $font-display;
+    font-size: $display-4xl;
+    font-weight: $weight-bold;
+    line-height: $leading-tight;
+    letter-spacing: $tracking-tight;
+    color: $color-text-primary;
+    max-width: 560px;
+  }
+
+  &__tagline {
+    font-size: $text-lg;
+    font-style: italic;
+    color: $color-text-tertiary;
+    max-width: 440px;
+    line-height: $leading-relaxed;
+  }
+
+  &__brand {
+    margin-top: $space-12;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-3;
+  }
+
+  &__brand-logo {
+    width: 40px;
+    height: 40px;
+    opacity: 0.6;
+  }
+
+  &__brand-name {
+    font-size: $text-xs;
+    font-weight: $weight-semibold;
+    text-transform: uppercase;
+    letter-spacing: $tracking-wider;
+    color: $color-text-tertiary;
+  }
+}
+
+// ==========================================================================
+// SCORE RING (SVG component)
+// ==========================================================================
+
+.score-ring {
+  &__svg {
+    transform: rotate(-90deg);
+  }
+
+  &__track {
+    fill: none;
+    stroke: $color-bg-muted;
+    stroke-width: 6;
+  }
+
+  &__fill {
+    fill: none;
+    stroke-width: 6;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 1.5s $ease-out;
+  }
+
+  &__text {
+    font-family: $font-display;
+    font-weight: $weight-bold;
+    fill: $color-text-primary;
+    text-anchor: middle;
+    dominant-baseline: central;
+  }
+
+  &__label {
+    font-family: $font-body;
+    font-weight: $weight-semibold;
+    fill: $color-text-tertiary;
+    text-anchor: middle;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+}
+
+// ==========================================================================
+// TIER BADGES
+// ==========================================================================
+
+.tier-badge {
+  display: inline-flex;
+  padding: $space-1 $space-3;
+  border-radius: $radius-full;
+  font-size: 10px;
+  font-weight: $weight-semibold;
+  text-transform: uppercase;
+  letter-spacing: $tracking-wider;
+
+  &--distinguished {
+    background: rgba($tier-distinguished, 0.08);
+    color: $tier-distinguished;
+  }
+  &--high {
+    background: rgba($tier-high, 0.10);
+    color: #047857;
+  }
+  &--moderate {
+    background: rgba($tier-moderate, 0.15);
+    color: #92400E;
+  }
+  &--developing {
+    background: rgba($tier-developing, 0.15);
+    color: #57534E;
+  }
+}
+
+// ==========================================================================
+// CHART CONTAINER
+// ==========================================================================
+
+.chart-panel {
+  background: $color-bg-page;
+  border: 1px solid $color-border-default;
+  border-radius: $radius-lg;
+  padding: $space-8;
+  margin-bottom: $space-8;
+
+  &__title {
+    font-size: $text-xs;
+    font-weight: $weight-semibold;
+    text-transform: uppercase;
+    letter-spacing: $tracking-wider;
+    color: $color-text-tertiary;
+    margin-bottom: $space-6;
+  }
+
+  &__canvas {
+    width: 100%;
+    min-height: 320px;
+  }
+}
+
+// ==========================================================================
+// ACCESSIBILITY
+// ==========================================================================
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+:focus-visible {
+  outline: 2px solid $accent-primary;
+  outline-offset: 2px;
+}
+
+// ==========================================================================
+// PRINT
+// ==========================================================================
+
+@media print {
+  .nav-sidebar { display: none; }
+  .page-container { margin-left: 0; }
+  .page {
+    display: flex !important;
+    page-break-after: always;
+    min-height: auto;
+    padding: 2rem;
+  }
+  .page-footer { page-break-inside: avoid; }
+}
+
+// ==========================================================================
+// RESPONSIVE
+// ==========================================================================
+
+@media (max-width: 1024px) {
+  .nav-sidebar { display: none; }
+  .page-container { margin-left: 0; }
+  .brain-layout { grid-template-columns: 1fr; }
+  .brain-layout__canvas { position: static; }
+  .persona-layout { grid-template-columns: 1fr; }
+  .overview-grid { grid-template-columns: 1fr; }
+  .highlight-badges { grid-template-columns: repeat(2, 1fr); }
+  .domain-matrix { grid-template-columns: 1fr; }
+  .methodology-grid { grid-template-columns: 1fr; }
+  .insight-cards { grid-template-columns: 1fr; }
+  .labs-grid__item { grid-template-columns: auto 1fr; }
+  .labs-grid__lab { display: none; }
+  .roadmap__stage { grid-template-columns: 60px 1fr; }
+}

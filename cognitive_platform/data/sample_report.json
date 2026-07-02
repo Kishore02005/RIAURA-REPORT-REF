@@ -1,0 +1,25 @@
+{
+  "metadata": {
+    "company_logo": "/static/assets/riaura-logo.svg",
+    "company_name": "Riaura",
+    "participant_name": "Alexandra Chen",
+    "age": 34,
+    "gender": "Female",
+    "assessment_date": "2026-06-28",
+    "assessment_id": "RC-2026-04891"
+  },
+  "assessment": {
+    "overall_score": 78.5,
+    "domains": [
+      { "name": "attention", "score": 82 },
+      { "name": "memory", "score": 71 },
+      { "name": "processing", "score": 88 },
+      { "name": "reasoning", "score": 75 },
+      { "name": "decision_integrity", "score": 69 },
+      { "name": "emotional_intelligence", "score": 84 },
+      { "name": "originality", "score": 63 },
+      { "name": "metacognition", "score": 79 }
+    ]
+  },
+  "brain_mapping_asset": "/static/assets/brain-placeholder.svg"
+}

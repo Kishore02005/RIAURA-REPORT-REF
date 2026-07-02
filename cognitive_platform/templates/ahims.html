@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <title>AHIMS&trade; &mdash; Cognitive Intelligence Report</title>
+  <script>(function(){var s=localStorage.getItem('ahims-theme');if(s)document.documentElement.setAttribute('data-theme',s);})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/ahims.css?v=8.0">
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+</head>
+<body>
+
+<a href="#overview" class="skip">Skip to content</a>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="#cover" class="nav__logo" aria-label="Top"><img src="/static/assets/RIAURA logo.png" alt="" width="48" height="48"><span class="nav__brand">AHIMS</span></a>
+    <span class="nav__label" id="nav-label"></span>
+    <div class="nav__dots" id="nav-dots" role="img" aria-label="Sections"></div>
+    <button class="theme-btn" id="theme-btn" type="button" aria-label="Toggle theme">
+      <svg class="theme-btn__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg>
+      <svg class="theme-btn__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- 1. COVER -->
+<section id="cover" class="sec" data-section="cover" data-label="Cover">
+  <div class="cover">
+    <div>
+      <span class="cover__eyebrow reveal">Cognitive Intelligence Report</span>
+      <h1 class="cover__name reveal">{{ participant_name }}</h1>
+      <p class="cover__desc reveal">A structured view of how your mind works across eight cognitive domains.</p>
+      <div class="cover__meta reveal">
+        <span>{{ assessment_date }}</span><span>&middot;</span><span>{{ assessment_id }}</span>
+      </div>
+    </div>
+    <div class="cover__right">
+      <div id="cover-ring" class="reveal"></div>
+      <span class="cover__tier reveal">{{ tier_label }}</span>
+    </div>
+  </div>
+  <div class="scroll-hint" aria-hidden="true">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M7 13l5 5 5-5"/><path d="M7 7l5 5 5-5" opacity=".4"/></svg>
+  </div>
+</section>
+
+<!-- 2. OVERVIEW -->
+<section id="overview" class="sec sec--alt" data-section="overview" data-label="Overview">
+  <div class="sec__inner">
+    <span class="sec__eyebrow reveal">Overview</span>
+    <h2 class="sec__title reveal">Your cognitive fingerprint.</h2>
+    <p class="sec__sub reveal">{{ section2.transition_sentence }}</p>
+    <div class="domain-bars reveal" id="domain-bars"></div>
+  </div>
+</section>
+
+<!-- 3. EXECUTIVE SUMMARY -->
+<section id="executive" class="sec" data-section="executive" data-label="Summary">
+  <div class="sec__inner">
+    <span class="sec__eyebrow reveal">Executive Summary</span>
+    <blockquote class="quote reveal">{{ section3.pull_quote }}</blockquote>
+    <div class="exec-grid">
+      <div class="exec-card reveal">
+        <span class="exec-card__label">Strongest</span>
+        <h3 class="exec-card__name" style="color:{{ section3.strongest_capability.color }}">{{ section3.strongest_capability.name }}</h3>
+        <span class="exec-card__num">{{ section3.strongest_capability.score }}%</span>
+      </div>
+      <div class="exec-card reveal">
+        <span class="exec-card__label">Growth Area</span>
+        <h3 class="exec-card__name" style="color:{{ section3.primary_development.color }}">{{ section3.primary_development.name }}</h3>
+        <span class="exec-card__num">{{ section3.primary_development.score }}%</span>
+      </div>
+      <div class="exec-card reveal">
+        <span class="exec-card__label">Cognitive Style</span>
+        <h3 class="exec-card__name">{{ section3.overall_style.name }}</h3>
+        <p class="exec-card__text">{{ section3.overall_style.description }}</p>
+      </div>
+    </div>
+    <p style="font-size:var(--fs-sm);color:var(--text-3);margin-top:24px;font-style:italic" class="reveal">{{ section3.confidence_note }}</p>
+  </div>
+</section>
+
+<!-- 4. PERFORMANCE -->
+<section id="performance" class="sec sec--alt" data-section="performance" data-label="Performance">
+  <div class="sec__inner">
+    <span class="sec__eyebrow reveal">Performance</span>
+    <h2 class="sec__title reveal">The story of balance.</h2>
+    <div class="perf-grid">
+      <div id="perf-radar" class="perf-radar reveal"></div>
+      <div class="perf-side">
+        <div class="perf-bal reveal">
+          <div id="balance-ring"></div>
+          <div class="perf-bal__info">
+            <span class="perf-bal__lbl">Balance</span>
+            <span class="perf-bal__desc">{{ section4.balance_description }}</span>
+          </div>
+        </div>
+        <div id="perf-lollipop" class="reveal"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. DOMAIN EXPLORER -->
+<section id="explorer" class="sec" data-section="explorer" data-label="Domains">
+  <div class="sec__inner">
+    <span class="sec__eyebrow reveal">Domains</span>
+    <h2 class="sec__title reveal">Eight cognitive dimensions.</h2>
+    <p class="sec__sub reveal">Click any card to explore.</p>
+    <div class="domain-grid stagger" id="explorer-cards"></div>
+  </div>
+</section>
+
+<!-- 6. BRAIN -->
+<section id="brain" class="sec sec--alt" data-section="brain" data-label="Brain">
+  <div class="sec__inner">
+    <span class="sec__eyebrow reveal">Brain Systems</span>
+    <h2 class="sec__title reveal">Neural architecture.</h2>
+    <div class="brain-grid">
+      <div id="brain-main" class="brain-svg reveal"></div>
+      <div id="brain-cards" class="brain-list stagger"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. ARCHITECTURE -->
+<section id="architecture" class="sec" data-section="architecture" data-label="Architecture">
+  <div class="sec__inner">
+    <span class="sec__eyebrow reveal">Architecture</span>
+    <h2 class="sec__title reveal">How abilities interconnect.</h2>
+    <div class="arch-grid">
+      <div id="arch-sankey" class="arch-sankey reveal"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. FUNCTIONAL -->
+<section id="functional" class="sec sec--alt" data-section="functional" data-label="Function">
+  <div class="sec__inner">
+    <span class="sec__eyebrow reveal">Real-World</span>
+    <h2 class="sec__title reveal">How it shows up daily.</h2>
+    <div class="card-grid stagger" id="func-grid"></div>
+  </div>
+</section>
+
+<!-- 9. INTERPERSONAL -->
+<section id="interpersonal" class="sec" data-section="interpersonal" data-label="Interpersonal">
+  <div class="sec__inner">
+    <span class="sec__eyebrow reveal">Interpersonal</span>
+    <h2 class="sec__title reveal">How you connect.</h2>
+    <div class="interp-grid stagger" id="interp-cards"></div>
+  </div>
+</section>
+
+<!-- 10. PERSONA -->
+<section id="persona" class="sec sec--alt" data-section="persona" data-label="Persona">
+  <div class="sec__inner persona">
+    <span class="sec__eyebrow reveal">Persona</span>
+    <h2 class="persona__name" id="persona-name">
+      {% for w in section10.name.split() %}<span class="persona__word">{{ w }}</span>{% endfor %}
+    </h2>
+    <p class="persona__tagline reveal">{{ section10.descriptor }}</p>
+    <p class="persona__text reveal">{{ section10.narrative }}</p>
+    <div class="persona__traits reveal">
+      {% for s in section10.strengths %}<span class="persona__trait">{{ s }}</span>{% endfor %}
+    </div>
+    <p class="persona__style reveal">{{ section10.working_style }}</p>
+  </div>
+</section>
+
+<!-- 11. DEVELOPMENT -->
+<section id="development" class="sec" data-section="development" data-label="Development">
+  <div class="sec__inner">
+    <span class="sec__eyebrow reveal">Development</span>
+    <h2 class="sec__title reveal">Where to focus next.</h2>
+    <p class="sec__intro reveal">A structured path from current strengths to targeted growth. Each phase builds on the last, creating compounding gains across your cognitive profile.</p>
+    <div id="dev-roadmap" class="dev-road reveal"></div>
+    <div class="dev-divider reveal"></div>
+    <h3 class="dev-sub reveal">Priority Areas</h3>
+    <div id="dev-focus" class="dev-focus reveal"></div>
+  </div>
+</section>
+
+<!-- 12. LABS -->
+<section id="labs" class="sec sec--alt" data-section="labs" data-label="Labs">
+  <div class="sec__inner">
+    <span class="sec__eyebrow reveal">Recommended Labs</span>
+    <h2 class="sec__title reveal">Targeted practice.</h2>
+    <div class="labs-flow stagger" id="labs-flow"></div>
+  </div>
+</section>
+
+<!-- 13. APPENDIX -->
+<section id="appendix" class="sec" data-section="appendix" data-label="Appendix">
+  <div class="sec__inner">
+    <span class="sec__eyebrow reveal">Appendix</span>
+    <h2 class="sec__title reveal">Reference.</h2>
+    <p class="sec__sub reveal">A detailed breakdown of each cognitive domain, its underlying neural substrate, and the colour system used throughout this report.</p>
+
+    <h3 class="app-heading reveal">Brain Regions</h3>
+    <p class="app-subtext reveal">Each cognitive domain is anchored in specific neural architecture. These mappings reflect current neuroscience research on brain–behaviour relationships.</p>
+    <div id="app-brain-grid" class="app-brain-grid stagger"></div>
+
+    <div class="app-divider reveal"></div>
+
+    <h3 class="app-heading reveal">Domain Glossary</h3>
+    <div id="app-glossary" class="app-glossary stagger"></div>
+
+    <div class="app-divider reveal"></div>
+
+    <h3 class="app-heading reveal">Colour System</h3>
+    <p class="app-subtext reveal">Each domain is assigned a consistent hue across all visualisations in this report.</p>
+    <div id="app-colors" class="app-colors stagger"></div>
+
+    <div class="disclaimer reveal">
+      <p><strong>Disclaimer:</strong> This assessment does not diagnose clinical conditions, predict life outcomes, or assign inherent worth. Results should not be used as the sole basis for significant decisions about individuals.</p>
+    </div>
+    <p class="app-footer reveal">AHIMS&trade; v5.0 &middot; &copy; {{ assessment_date.split()[-1] if assessment_date else '2026' }} {{ metadata.company_name }}</p>
+  </div>
+</section>
+
+<!-- STICKY -->
+<div class="sticky" id="sticky-footer">
+  <button class="sticky__btn" id="btn-download" type="button">
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M10 3v10m0 0l-3-3m3 3l3-3"/><path d="M3 14v2a1 1 0 001 1h12a1 1 0 001-1v-2"/></svg>
+    Download
+  </button>
+  <button class="sticky__btn" id="btn-share" type="button">
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="14" cy="4" r="2.5"/><circle cx="5.5" cy="10" r="2.5"/><circle cx="14" cy="16" r="2.5"/><line x1="7.7" y1="8.8" x2="11.8" y2="5.2"/><line x1="7.7" y1="11.2" x2="11.8" y2="14.8"/></svg>
+    Share
+  </button>
+</div>
+
+<script>
+window.__D={overallScore:{{ overall_score }},tierLabel:"{{ tier_label }}",domains:{{ domain_data_json | safe }},s2:{{ section2 | tojson | safe }},s3:{{ section3 | tojson | safe }},s4:{{ section4 | tojson | safe }},s5:{{ section5 | tojson | safe }},s6:{{ section6 | tojson | safe }},s7:{{ section7 | tojson | safe }},s8:{{ section8 | tojson | safe }},s9:{{ section9 | tojson | safe }},s10:{{ section10 | tojson | safe }},s11:{{ section11 | tojson | safe }},s12:{{ section12 | tojson | safe }},glossary:{{ glossary | tojson | safe }}};
+</script>
+<script src="/static/js/ahims-viz.js?v=5.0"></script>
+<script>
+(function(){
+'use strict';
+var d=window.__D;if(!d)return;
+
+/* Theme */
+var tb=document.getElementById('theme-btn');
+if(tb)tb.addEventListener('click',function(){var c=document.documentElement.getAttribute('data-theme'),n=c==='light'?'dark':'light';document.documentElement.setAttribute('data-theme',n);localStorage.setItem('ahims-theme',n);/* re-render charts for theme */var cr2=document.getElementById('cover-ring');if(cr2){cr2.innerHTML='';var r2=document.createElement('div');r2.className='ring';A.buildRing(r2,d.overallScore,'var(--gold)',220);var t2=document.createElement('div');t2.className='ring__center';t2.innerHTML='<span class="ring__val ring__val--lg" data-count="'+d.overallScore+'" data-suffix="%">0</span><span class="ring__lbl">Overall Index</span>';r2.appendChild(t2);cr2.appendChild(r2);setTimeout(function(){var rf2=r2.querySelector('.ring__fill');if(rf2)rf2.classList.add('is-on');var cv2=r2.querySelector('[data-count]');if(cv2){var tgt=parseFloat(cv2.getAttribute('data-count'));var suf=cv2.getAttribute('data-suffix')||'';var dur=1300;var st=performance.now();(function step(now){var p=Math.min((now-st)/dur,1);cv2.textContent=Math.round(p*tgt)+suf;if(p<1)requestAnimationFrame(step);})(performance.now());}},100);}var rad2=document.getElementById('perf-radar');if(rad2){rad2.innerHTML='';A.buildRadar(rad2,d.domains,400);}var bal2=document.getElementById('balance-ring');if(bal2){bal2.innerHTML='';var br2=document.createElement('div');br2.className='ring';A.buildRing(br2,d.s4.balance_score,'var(--teal)',120);var bt2=document.createElement('div');bt2.className='ring__center';bt2.innerHTML='<span class="ring__val ring__val--sm" data-count="'+d.s4.balance_score+'" data-suffix="%">0</span><span class="ring__lbl">Balance</span>';br2.appendChild(bt2);bal2.appendChild(br2);setTimeout(function(){var bf2=br2.querySelector('.ring__fill');if(bf2)bf2.classList.add('is-on');var bv2=br2.querySelector('[data-count]');if(bv2){var tgt=parseFloat(bv2.getAttribute('data-count'));var suf=bv2.getAttribute('data-suffix')||'';var dur=1300;var st=performance.now();(function step(now){var p=Math.min((now-st)/dur,1);bv2.textContent=Math.round(p*tgt)+suf;if(p<1)requestAnimationFrame(step);})(performance.now());}},100);}});
+
+/* Nav dots */
+var secs=document.querySelectorAll('[data-section]'),dotsEl=document.getElementById('nav-dots'),lblEl=document.getElementById('nav-label');
+secs.forEach(function(s){var a=document.createElement('a');a.href='#'+s.id;a.className='dot';a.setAttribute('aria-label',s.dataset.label||s.id);dotsEl.appendChild(a);});
+var dots=dotsEl.querySelectorAll('.dot');
+var navObs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){lblEl.textContent=e.target.dataset.label||'';dots.forEach(function(d,i){d.classList.toggle('is-on',secs[i]===e.target);});}});},{rootMargin:'-40% 0px -55% 0px'});
+secs.forEach(function(s){navObs.observe(s);});
+
+/* Nav bg */
+var navEl=document.getElementById('nav'),covEl=document.getElementById('cover');
+if(navEl&&covEl){var nbo=new IntersectionObserver(function(es){es.forEach(function(e){navEl.classList.toggle('nav--solid',!e.isIntersecting);});},{threshold:.1});nbo.observe(covEl);}
+
+/* Reveal */
+var rObs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-on');rObs.unobserve(e.target);}});},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(function(e){rObs.observe(e);});
+
+/* Stagger */
+var sObs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var k=e.target.children;for(var i=0;i<k.length;i++){(function(el,j){setTimeout(function(){el.classList.add('is-on');},j*70);})(k[i],i);}sObs.unobserve(e.target);}});},{threshold:.1});
+document.querySelectorAll('.stagger').forEach(function(e){sObs.observe(e);});
+
+/* Count */
+var cObs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!e.target.dataset.a){e.target.dataset.a='1';var el=e.target,t=parseFloat(el.getAttribute('data-count'));if(isNaN(t))t=0;var suf=el.getAttribute('data-suffix')||'',dur=1300,st=performance.now();(function step(now){var p=Math.min((now-st)/dur,1);el.textContent=Math.round(p*t)+suf;if(p<1)requestAnimationFrame(step);})(performance.now());cObs.unobserve(e.target);}});},{threshold:.3});
+document.querySelectorAll('[data-count]').forEach(function(e){cObs.observe(e);});
+
+/* Ring fill */
+var rfObs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-on');rfObs.unobserve(e.target);}});},{threshold:.2});
+
+/* Fingerprint reveal */
+var baObs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var segs=e.target.querySelectorAll('.fp-seg');var lbls=e.target.querySelectorAll('.fp-lbl');var ctrs=e.target.querySelectorAll('.fp-center');segs.forEach(function(s,i){setTimeout(function(){s.classList.add('is-on');},i*80);});lbls.forEach(function(l,i){setTimeout(function(){l.classList.add('is-on');},i*80+400);});ctrs.forEach(function(c){c.classList.add('is-on');});baObs.unobserve(e.target);}});},{threshold:.3});
+var baWrap=document.getElementById('brain-abstract');if(baWrap)baObs.observe(baWrap);
+
+/* Parallel coordinates reveal */
+var dbObs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var path=e.target.querySelector('.dc-path');var dots=e.target.querySelectorAll('.dc-dot');if(path)setTimeout(function(){path.classList.add('is-on');},200);dots.forEach(function(d,i){setTimeout(function(){d.classList.add('is-on');},i*120+400);});dbObs.unobserve(e.target);}});},{threshold:.2});
+var dbWrap=document.getElementById('domain-bars');if(dbWrap)dbObs.observe(dbWrap);
+
+/* ---- CHARTS ---- */
+
+/* Cover ring */
+var cr=document.getElementById('cover-ring');
+if(cr){var r=document.createElement('div');r.className='ring';A.buildRing(r,d.overallScore,'var(--gold)',220);var t=document.createElement('div');t.className='ring__center';t.innerHTML='<span class="ring__val ring__val--lg" data-count="'+d.overallScore+'" data-suffix="%">0</span><span class="ring__lbl">Overall Index</span>';r.appendChild(t);cr.appendChild(r);/* trigger ring fill after reveal */var rf=r.querySelector('.ring__fill');if(rf)setTimeout(function(){rf.classList.add('is-on');},600);}
+
+/* Abstract Brain */
+var baEl=document.getElementById('brain-abstract');
+if(baEl)A.buildBrainAbstract(baEl,d.domains,400);
+
+/* Parallel Coordinates Chart */
+var dbEl=document.getElementById('domain-bars');
+if(dbEl){
+  var sorted=d.domains.slice().sort(function(a,b){return b.score-a.score;});
+  var W=1200,H=440,padL=40,padR=40,padT=32,padB=80;
+  var usable=W-padL-padR;
+  var n=sorted.length;
+  var gap=usable/(n-1);
+  var minV=0,maxV=100;
+  var yScale=function(v){return padT+(1-(v-minV)/(maxV-minV))*(H-padT-padB);};
+  var xPos=function(i){return padL+i*gap;};
+  var shortNames={'Processing Speed':'Processing','Emotional Intelligence':'Emotional','Decision Integrity':'Decision','Attention':'Attention','Memory':'Memory','Reasoning':'Reasoning','Originality':'Originality','Metacognition':'Metacognitive'};
+  var ns='http://www.w3.org/2000/svg';
+  var svg=document.createElementNS(ns,'svg');
+  svg.setAttribute('viewBox','0 0 '+W+' '+H);svg.setAttribute('preserveAspectRatio','xMinYMid meet');
+  var gradId='dc-grad-'+Date.now();
+  var defs=document.createElementNS(ns,'defs');
+  var grad=document.createElementNS(ns,'linearGradient');grad.id=gradId;grad.setAttribute('x1','0');grad.setAttribute('y1','0');grad.setAttribute('x2','1');grad.setAttribute('y2','0');
+  sorted.forEach(function(dd,i){
+    var s=document.createElementNS(ns,'stop');s.setAttribute('offset',(i/(n-1)*100)+'%');s.setAttribute('stop-color',dd.color);grad.appendChild(s);
+  });
+  defs.appendChild(grad);svg.appendChild(defs);
+  /* tick lines at 25,50,75 */
+  [25,50,75].forEach(function(tv){
+    var ty=yScale(tv);
+    sorted.forEach(function(dd,i){
+      var x=xPos(i);
+      var tl=document.createElementNS(ns,'line');tl.setAttribute('x1',x-3);tl.setAttribute('y1',ty);tl.setAttribute('x2',x+3);tl.setAttribute('y2',ty);tl.classList.add('dc-tick-line');svg.appendChild(tl);
+    });
+  });
+  /* axes + labels */
+  sorted.forEach(function(dd,i){
+    var x=xPos(i);
+    var line=document.createElementNS(ns,'line');line.setAttribute('x1',x);line.setAttribute('y1',padT);line.setAttribute('x2',x);line.setAttribute('y2',H-padB);line.classList.add('dc-axis');svg.appendChild(line);
+    var lbl=document.createElementNS(ns,'text');lbl.setAttribute('x',x);lbl.setAttribute('y',H-padB+14);lbl.setAttribute('text-anchor','middle');lbl.classList.add('dc-axis-label');lbl.textContent=shortNames[dd.name]||dd.name;svg.appendChild(lbl);
+    [25,50,75].forEach(function(tv){
+      var t=document.createElementNS(ns,'text');t.setAttribute('x',x-6);t.setAttribute('y',yScale(tv)+3);t.classList.add('dc-tick-label');t.textContent=tv;t.setAttribute('text-anchor','end');svg.appendChild(t);
+    });
+  });
+  /* polyline */
+  var pts=sorted.map(function(dd,i){return xPos(i)+','+yScale(dd.score);});
+  var path=document.createElementNS(ns,'path');path.setAttribute('d','M'+pts.join(' L'));path.setAttribute('stroke','url(#'+gradId+')');path.classList.add('dc-path');svg.appendChild(path);
+  /* dots */
+  sorted.forEach(function(dd,i){
+    var c=document.createElementNS(ns,'circle');c.setAttribute('cx',xPos(i));c.setAttribute('cy',yScale(dd.score));c.setAttribute('fill',dd.color);c.classList.add('dc-dot');svg.appendChild(c);
+  });
+  dbEl.appendChild(svg);
+}
+
+/* Performance */
+var radEl=document.getElementById('perf-radar');if(radEl)A.buildRadar(radEl,d.domains,500);
+var balEl=document.getElementById('balance-ring');
+if(balEl){var br=document.createElement('div');br.className='ring';A.buildRing(br,d.s4.balance_score,'var(--teal)',120);var bt=document.createElement('div');bt.className='ring__center';bt.innerHTML='<span class="ring__val ring__val--sm" data-count="'+d.s4.balance_score+'" data-suffix="%">0</span><span class="ring__lbl">Balance</span>';br.appendChild(bt);balEl.appendChild(br);}
+var lolEl=document.getElementById('perf-lollipop');if(lolEl)A.buildLollipop(lolEl,d.s4.domain_ranking,d.s4.avg_score);
+
+/* Explorer */
+var expEl=document.getElementById('explorer-cards');
+if(expEl){d.s5.forEach(function(dom){var c=document.createElement('div');c.className='dcard reveal';c.id='dc-'+dom.key;c.style.setProperty('--c',dom.color);c.innerHTML='<div class="dcard__top"><div class="dcard__ring" id="ecr-'+dom.key+'"></div><div class="dcard__info"><h3 class="dcard__name">'+dom.name+'</h3><span class="dcard__region">'+dom.brain_region+'</span></div><svg class="dcard__chev" viewBox="0 0 20 20" fill="none"><path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="dcard__body"><p>'+dom.description+'</p><p>'+dom.narrative+'</p><div class="dcard__hint"><strong>Try:</strong> '+dom.development_hint+'</div></div>';expEl.appendChild(c);setTimeout(function(){var rc=document.getElementById('ecr-'+dom.key);if(rc){var rr=document.createElement('div');rr.className='ring';A.buildRing(rr,dom.score,dom.color,52);var rt=document.createElement('div');rt.className='ring__center';rt.innerHTML='<span class="ring__val ring__val--sm">'+Math.round(dom.score)+'</span>';rr.appendChild(rt);rc.appendChild(rr);}},50);});expEl.addEventListener('click',function(e){var c=e.target.closest('.dcard');if(!c)return;var was=c.classList.contains('is-open');expEl.querySelectorAll('.dcard.is-open').forEach(function(x){x.classList.remove('is-open');});if(!was)c.classList.add('is-open');});}
+/* Brain */
+var brEl=document.getElementById('brain-main');if(brEl)A.buildBrain(brEl,d.domains);
+var bcEl=document.getElementById('brain-cards');
+if(bcEl){d.s6.forEach(function(b){var c=document.createElement('div');c.className='bcard reveal';c.innerHTML='<span class="bcard__dot" style="background:'+b.color+'"></span><div class="bcard__info"><h4 class="bcard__name">'+b.name+'</h4><span class="bcard__region">'+b.brain_region+'</span><span class="bcard__tier">'+b.tier+' &middot; '+b.score+'%</span></div>';bcEl.appendChild(c);});}
+
+/* Architecture - Sankey + Parliament Transition */
+var archSankey=document.getElementById('arch-sankey');
+if(archSankey&&typeof echarts!=='undefined'){
+  var allColors=['#F5A623','#1F9E96','#3D63DD','#7C5CFC','#2E8B57','#E8607A','#F0654A','#4B3F72','#D4A72C','#9B7CC8','#3498DB'];
+  var nameColorMap={'Attention':allColors[0],'Memory':allColors[1],'Processing':allColors[2],'Reasoning':allColors[3],'Decision Integrity':allColors[4],'Emotional Intelligence':allColors[5],'Originality':allColors[6],'Metacognition':allColors[7],'Learning':allColors[8],'Problem Solving':allColors[9],'Daily Behaviour':allColors[10]};
+  var sankeyNodes=[
+    {name:'Attention',itemStyle:{color:allColors[0]}},
+    {name:'Memory',itemStyle:{color:allColors[1]}},
+    {name:'Processing',itemStyle:{color:allColors[2]}},
+    {name:'Reasoning',itemStyle:{color:allColors[3]}},
+    {name:'Decision Integrity',itemStyle:{color:allColors[4]}},
+    {name:'Emotional Intelligence',itemStyle:{color:allColors[5]}},
+    {name:'Originality',itemStyle:{color:allColors[6]}},
+    {name:'Metacognition',itemStyle:{color:allColors[7]}},
+    {name:'Learning',itemStyle:{color:allColors[8]}},
+    {name:'Problem Solving',itemStyle:{color:allColors[9]}},
+    {name:'Daily Behaviour',itemStyle:{color:allColors[10]}}
+  ];
+  var sankeyLinks=d.s7.flows.map(function(f){return{source:f.from,target:f.to,value:f.strength*100};});
+
+  var sankeyChart=echarts.init(archSankey,null,{renderer:'svg'});
+  sankeyChart.setOption({
+    backgroundColor:'transparent',
+    tooltip:{trigger:'item',triggerOn:'mousemove',formatter:function(p){if(p.dataType==='edge')return p.data.source+' → '+p.data.target+'<br/>Strength: '+Math.round(p.data.value)+'%';return p.name;}},
+    series:[{type:'sankey',layout:'none',emphasis:{focus:'adjacency'},nodeAlign:'justify',layoutIterations:32,orient:'horizontal',nodeWidth:16,nodeGap:12,label:{show:true,color:'var(--text-2)',fontFamily:'var(--ff-mono)',fontSize:11},lineStyle:{color:'gradient',curveness:0.5,opacity:0.35},data:sankeyNodes,links:sankeyLinks}]
+  });
+
+  window.addEventListener('resize',function(){sankeyChart.resize();});
+}
+
+/* Functional */
+var fuEl=document.getElementById('func-grid');
+if(fuEl){d.s8.forEach(function(f){var c=document.createElement('div');c.className='xcard reveal';var pills=f.domains.map(function(dd){return'<span class="pill" style="background:'+dd.color+'">'+dd.name+'</span>';}).join('');c.innerHTML='<h3 class="xcard__title">'+f.title+'</h3><p class="xcard__text">'+f.narrative+'</p><div class="xcard__pills">'+pills+'</div>';fuEl.appendChild(c);});}
+
+/* Interpersonal */
+var inEl=document.getElementById('interp-cards');
+if(inEl){var ICONS=['<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>'];
+d.s9.connections.forEach(function(c,i){var el=document.createElement('div');el.className='icard reveal';var icon=ICONS[i%ICONS.length];var pills=c.domains.map(function(dd){return'<span class="pill" style="background:'+dd.color+'">'+dd.name+'</span>';}).join('');el.innerHTML='<div class="icard__icon">'+icon+'</div><div class="icard__body"><h3 class="icard__title">'+c.skill+'</h3><p class="icard__desc">'+c.description+'</p><div class="icard__pills">'+pills+'</div></div>';inEl.appendChild(el);});}
+
+/* Dev matrix */
+/* Dev roadmap */
+var rdEl=document.getElementById('dev-roadmap');
+if(rdEl){
+  var rh='<div class="timeline">';
+  d.s11.roadmap.forEach(function(r,i){
+    rh+='<div class="timeline__item">';
+    rh+='<div class="timeline__marker"><span class="timeline__dot"></span>'+(i<d.s11.roadmap.length-1?'<span class="timeline__line"></span>':'')+'</div>';
+    rh+='<div class="timeline__content"><span class="timeline__phase">'+r.phase+'</span><p class="timeline__text">'+r.action+'</p></div>';
+    rh+='</div>';
+  });
+  rh+='</div>';
+  rdEl.innerHTML=rh;
+}
+
+/* Dev focus cards */
+var fcEl=document.getElementById('dev-focus');
+if(fcEl){
+  var fh='<div class="focus-grid">';
+  d.s11.priorities.forEach(function(p){
+    fh+='<div class="focus-card" style="--c:'+p.color+'">';
+    fh+='<div class="focus-card__head"><span class="focus-card__rank">'+p.rank+'</span><span class="focus-card__name">'+p.name+'</span></div>';
+    fh+='<div class="focus-card__bar"><div class="focus-card__fill" style="width:'+p.score+'%;background:'+p.color+'"></div></div>';
+    fh+='<div class="focus-card__meta"><span class="focus-card__score">'+Math.round(p.score)+'%</span><span class="focus-card__impact '+p.impact.toLowerCase()+'">'+p.impact+' Impact</span></div>';
+    fh+='<p class="focus-card__hint">'+p.hint+'</p>';
+    fh+='</div>';
+  });
+  fh+='</div>';
+  fcEl.innerHTML=fh;
+}
+
+/* Labs */
+var lbEl=document.getElementById('labs-flow');
+if(lbEl){var ARROW='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14m0 0l-6-6m6 6l6-6"/></svg>';d.s12.forEach(function(lab){var c=document.createElement('div');c.className='lcard reveal';c.style.setProperty('--c',lab.color);c.innerHTML='<div class="lcard__rank">'+lab.rank+'</div><div class="lcard__body"><span class="pill" style="background:'+lab.color+'">'+lab.domain_name+'</span><h3 class="lcard__title">'+lab.lab_name+'</h3><div class="lcard__flow"><div class="lcard__step"><span class="lcard__step-lbl">Activity</span><p>'+lab.lab_description+'</p></div><div class="lcard__arrow">'+ARROW+'</div><div class="lcard__step"><span class="lcard__step-lbl">Benefit</span><p>'+lab.expected_benefit+'</p></div><div class="lcard__arrow">'+ARROW+'</div><div class="lcard__step"><span class="lcard__step-lbl">Brain</span><p>'+lab.brain_function+'</p></div></div></div>';lbEl.appendChild(c);});}
+
+/* Appendix — Brain Regions grid */
+var brEl=document.getElementById('app-brain-grid');
+if(brEl){d.glossary.forEach(function(g){var c=document.createElement('div');c.className='abcard';c.innerHTML='<div class="abcard__img"><img src="'+g.brain_image+'" alt="'+g.name+' brain region" loading="lazy"></div><div class="abcard__accent" style="background:'+g.color+'"></div><div class="abcard__body"><span class="abcard__name">'+g.name+'</span><span class="abcard__region">'+g.brain_region+'</span><p class="abcard__desc">'+g.description+'</p></div>';brEl.appendChild(c);});}
+
+/* Appendix — Glossary */
+var glEl=document.getElementById('app-glossary');
+if(glEl){var gh='';d.glossary.forEach(function(g){gh+='<div class="agloss"><span class="agloss__dot" style="background:'+g.color+'"></span><div class="agloss__text"><span class="agloss__name">'+g.name+'</span><p class="agloss__desc">'+g.description+'</p></div></div>';});glEl.innerHTML=gh;}
+
+/* Appendix — Colour System */
+var clEl=document.getElementById('app-colors');
+if(clEl){var ch='';d.glossary.forEach(function(g){ch+='<div class="acolor"><span class="acolor__swatch" style="background:'+g.color+'"></span><span class="acolor__name">'+g.name+'</span><span class="acolor__hex">'+g.color+'</span></div>';});clEl.innerHTML=ch;}
+
+/* Sticky */
+var sf=document.getElementById('sticky-footer');
+if(sf&&covEl){var sfo=new IntersectionObserver(function(es){es.forEach(function(e){sf.classList.toggle('is-on',!e.isIntersecting);});},{threshold:.1});sfo.observe(covEl);}
+var dlB=document.getElementById('btn-download');if(dlB)dlB.addEventListener('click',function(){window.print();});
+var shB=document.getElementById('btn-share');if(shB)shB.addEventListener('click',function(){if(navigator.share){navigator.share({title:'AHIMS Cognitive Report',url:window.location.href});}else if(navigator.clipboard){navigator.clipboard.writeText(window.location.href).then(function(){shB.textContent='Copied!';setTimeout(function(){shB.innerHTML='<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="14" cy="4" r="2.5"/><circle cx="5.5" cy="10" r="2.5"/><circle cx="14" cy="16" r="2.5"/><line x1="7.7" y1="8.8" x2="11.8" y2="5.2"/><line x1="7.7" y1="11.2" x2="11.8" y2="14.8"/></svg> Share';},1500);});}});
+
+/* Re-observe dynamic elements */
+document.querySelectorAll('[data-count]').forEach(function(e){cObs.observe(e);});
+document.querySelectorAll('.ring__fill').forEach(function(e){rfObs.observe(e);});
+/* Manually trigger stagger for dynamically-populated containers */
+document.querySelectorAll('.stagger').forEach(function(el){
+  if(el.children.length>0&&!el.querySelector('.is-on')){
+    var k=el.children;for(var i=0;i<k.length;i++){
+    (function(c,j){setTimeout(function(){c.classList.add('is-on');},j*70);})(k[i],i);
+  }}
+});
+})();
+</script>
+</body>
+</html>
