@@ -14,12 +14,24 @@
 </head>
 <body>
 
+<!-- MIND ABSTRACT PARALLAX -->
+<div class="mind-bg" id="mind-bg" aria-hidden="true"></div>
+
+<!-- FLOATING ORBS -->
+<div class="orbs" aria-hidden="true">
+  <div class="orb orb--1"></div>
+  <div class="orb orb--2"></div>
+  <div class="orb orb--3"></div>
+  <div class="orb orb--4"></div>
+  <div class="orb orb--5"></div>
+  <div class="orb orb--6"></div>
+</div>
+
 <a href="#overview" class="skip">Skip to content</a>
 
 <!-- NAV -->
 <nav class="nav" id="nav">
   <div class="nav__inner">
-    <a href="#cover" class="nav__logo" aria-label="Top"><img src="/static/assets/RIAURA logo.png" alt="" width="48" height="48"><span class="nav__brand">AHIMS</span></a>
     <span class="nav__label" id="nav-label"></span>
     <div class="nav__dots" id="nav-dots" role="img" aria-label="Sections"></div>
     <button class="theme-btn" id="theme-btn" type="button" aria-label="Toggle theme">
@@ -30,10 +42,11 @@
 </nav>
 
 <!-- 1. COVER -->
-<section id="cover" class="sec" data-section="cover" data-label="Cover">
+<section id="cover" class="sec" data-section="cover" data-label="Who am I?">
+  <div class="scroll-bar" id="scroll-bar"></div>
   <div class="cover">
     <div>
-      <span class="cover__eyebrow reveal">Cognitive Intelligence Report</span>
+      <span class="cover__eyebrow reveal">Riaura Cognitive Assessment Report</span>
       <h1 class="cover__name reveal">{{ participant_name }}</h1>
       <p class="cover__desc reveal">A structured view of how your mind works across eight cognitive domains.</p>
       <div class="cover__meta reveal">
@@ -50,8 +63,9 @@
   </div>
 </section>
 
+
 <!-- 2. OVERVIEW -->
-<section id="overview" class="sec sec--alt" data-section="overview" data-label="Overview">
+<section id="overview" class="sec sec--alt" data-section="overview" data-label="Who am I?">
   <div class="sec__inner">
     <span class="sec__eyebrow reveal">Overview</span>
     <h2 class="sec__title reveal">Your cognitive fingerprint.</h2>
@@ -60,8 +74,9 @@
   </div>
 </section>
 
+
 <!-- 3. EXECUTIVE SUMMARY -->
-<section id="executive" class="sec" data-section="executive" data-label="Summary">
+<section id="executive" class="sec" data-section="executive" data-label="How did I perform?">
   <div class="sec__inner">
     <span class="sec__eyebrow reveal">Executive Summary</span>
     <blockquote class="quote reveal">{{ section3.pull_quote }}</blockquote>
@@ -82,12 +97,13 @@
         <p class="exec-card__text">{{ section3.overall_style.description }}</p>
       </div>
     </div>
-    <p style="font-size:var(--fs-sm);color:var(--text-3);margin-top:24px;font-style:italic" class="reveal">{{ section3.confidence_note }}</p>
+    <p style="font-size:var(--fs-sm);color:var(--c-text-3);margin-top:24px;font-style:italic" class="reveal">{{ section3.confidence_note }}</p>
   </div>
 </section>
 
+
 <!-- 4. PERFORMANCE -->
-<section id="performance" class="sec sec--alt" data-section="performance" data-label="Performance">
+<section id="performance" class="sec sec--alt" data-section="performance" data-label="How did I perform?">
   <div class="sec__inner">
     <span class="sec__eyebrow reveal">Performance</span>
     <h2 class="sec__title reveal">The story of balance.</h2>
@@ -107,8 +123,9 @@
   </div>
 </section>
 
+
 <!-- 5. DOMAIN EXPLORER -->
-<section id="explorer" class="sec" data-section="explorer" data-label="Domains">
+<section id="explorer" class="sec" data-section="explorer" data-label="Why did I perform this way?">
   <div class="sec__inner">
     <span class="sec__eyebrow reveal">Domains</span>
     <h2 class="sec__title reveal">Eight cognitive dimensions.</h2>
@@ -117,8 +134,9 @@
   </div>
 </section>
 
+
 <!-- 6. BRAIN -->
-<section id="brain" class="sec sec--alt" data-section="brain" data-label="Brain">
+<section id="brain" class="sec sec--alt" data-section="brain" data-label="Why did I perform this way?">
   <div class="sec__inner">
     <span class="sec__eyebrow reveal">Brain Systems</span>
     <h2 class="sec__title reveal">Neural architecture.</h2>
@@ -129,19 +147,19 @@
   </div>
 </section>
 
+
 <!-- 7. ARCHITECTURE -->
-<section id="architecture" class="sec" data-section="architecture" data-label="Architecture">
+<section id="architecture" class="sec" data-section="architecture" data-label="What does it mean?">
   <div class="sec__inner">
     <span class="sec__eyebrow reveal">Architecture</span>
     <h2 class="sec__title reveal">How abilities interconnect.</h2>
-    <div class="arch-grid">
-      <div id="arch-sankey" class="arch-sankey reveal"></div>
-    </div>
+    <div class="arch-sankey reveal" id="arch-sankey"></div>
   </div>
 </section>
 
+
 <!-- 8. FUNCTIONAL -->
-<section id="functional" class="sec sec--alt" data-section="functional" data-label="Function">
+<section id="functional" class="sec sec--alt" data-section="functional" data-label="What does it mean?">
   <div class="sec__inner">
     <span class="sec__eyebrow reveal">Real-World</span>
     <h2 class="sec__title reveal">How it shows up daily.</h2>
@@ -149,8 +167,9 @@
   </div>
 </section>
 
+
 <!-- 9. INTERPERSONAL -->
-<section id="interpersonal" class="sec" data-section="interpersonal" data-label="Interpersonal">
+<section id="interpersonal" class="sec" data-section="interpersonal" data-label="What does it mean?">
   <div class="sec__inner">
     <span class="sec__eyebrow reveal">Interpersonal</span>
     <h2 class="sec__title reveal">How you connect.</h2>
@@ -158,9 +177,10 @@
   </div>
 </section>
 
+
 <!-- 10. PERSONA -->
-<section id="persona" class="sec sec--alt" data-section="persona" data-label="Persona">
-  <div class="sec__inner persona">
+<section id="persona" class="sec sec--alt" data-section="persona" data-label="What does it mean?">
+  <div class="sec__inner">
     <span class="sec__eyebrow reveal">Persona</span>
     <h2 class="persona__name" id="persona-name">
       {% for w in section10.name.split() %}<span class="persona__word">{{ w }}</span>{% endfor %}
@@ -174,8 +194,9 @@
   </div>
 </section>
 
+
 <!-- 11. DEVELOPMENT -->
-<section id="development" class="sec" data-section="development" data-label="Development">
+<section id="development" class="sec" data-section="development" data-label="What should I do next?">
   <div class="sec__inner">
     <span class="sec__eyebrow reveal">Development</span>
     <h2 class="sec__title reveal">Where to focus next.</h2>
@@ -187,8 +208,9 @@
   </div>
 </section>
 
+
 <!-- 12. LABS -->
-<section id="labs" class="sec sec--alt" data-section="labs" data-label="Labs">
+<section id="labs" class="sec sec--alt" data-section="labs" data-label="What should I do next?">
   <div class="sec__inner">
     <span class="sec__eyebrow reveal">Recommended Labs</span>
     <h2 class="sec__title reveal">Targeted practice.</h2>
@@ -196,18 +218,13 @@
   </div>
 </section>
 
+
 <!-- 13. APPENDIX -->
-<section id="appendix" class="sec" data-section="appendix" data-label="Appendix">
+<section id="appendix" class="sec" data-section="appendix" data-label="How should I interpret this report?">
   <div class="sec__inner">
     <span class="sec__eyebrow reveal">Appendix</span>
     <h2 class="sec__title reveal">Reference.</h2>
     <p class="sec__sub reveal">A detailed breakdown of each cognitive domain, its underlying neural substrate, and the colour system used throughout this report.</p>
-
-    <h3 class="app-heading reveal">Brain Regions</h3>
-    <p class="app-subtext reveal">Each cognitive domain is anchored in specific neural architecture. These mappings reflect current neuroscience research on brain–behaviour relationships.</p>
-    <div id="app-brain-grid" class="app-brain-grid stagger"></div>
-
-    <div class="app-divider reveal"></div>
 
     <h3 class="app-heading reveal">Domain Glossary</h3>
     <div id="app-glossary" class="app-glossary stagger"></div>
@@ -221,7 +238,7 @@
     <div class="disclaimer reveal">
       <p><strong>Disclaimer:</strong> This assessment does not diagnose clinical conditions, predict life outcomes, or assign inherent worth. Results should not be used as the sole basis for significant decisions about individuals.</p>
     </div>
-    <p class="app-footer reveal">AHIMS&trade; v5.0 &middot; &copy; {{ assessment_date.split()[-1] if assessment_date else '2026' }} {{ metadata.company_name }}</p>
+    <p class="app-footer reveal">&copy; {{ assessment_date.split()[-1] if assessment_date else '2026' }} {{ metadata.company_name }}</p>
   </div>
 </section>
 
@@ -248,7 +265,7 @@ var d=window.__D;if(!d)return;
 
 /* Theme */
 var tb=document.getElementById('theme-btn');
-if(tb)tb.addEventListener('click',function(){var c=document.documentElement.getAttribute('data-theme'),n=c==='light'?'dark':'light';document.documentElement.setAttribute('data-theme',n);localStorage.setItem('ahims-theme',n);/* re-render charts for theme */var cr2=document.getElementById('cover-ring');if(cr2){cr2.innerHTML='';var r2=document.createElement('div');r2.className='ring';A.buildRing(r2,d.overallScore,'var(--gold)',220);var t2=document.createElement('div');t2.className='ring__center';t2.innerHTML='<span class="ring__val ring__val--lg" data-count="'+d.overallScore+'" data-suffix="%">0</span><span class="ring__lbl">Overall Index</span>';r2.appendChild(t2);cr2.appendChild(r2);setTimeout(function(){var rf2=r2.querySelector('.ring__fill');if(rf2)rf2.classList.add('is-on');var cv2=r2.querySelector('[data-count]');if(cv2){var tgt=parseFloat(cv2.getAttribute('data-count'));var suf=cv2.getAttribute('data-suffix')||'';var dur=1300;var st=performance.now();(function step(now){var p=Math.min((now-st)/dur,1);cv2.textContent=Math.round(p*tgt)+suf;if(p<1)requestAnimationFrame(step);})(performance.now());}},100);}var rad2=document.getElementById('perf-radar');if(rad2){rad2.innerHTML='';A.buildRadar(rad2,d.domains,400);}var bal2=document.getElementById('balance-ring');if(bal2){bal2.innerHTML='';var br2=document.createElement('div');br2.className='ring';A.buildRing(br2,d.s4.balance_score,'var(--teal)',120);var bt2=document.createElement('div');bt2.className='ring__center';bt2.innerHTML='<span class="ring__val ring__val--sm" data-count="'+d.s4.balance_score+'" data-suffix="%">0</span><span class="ring__lbl">Balance</span>';br2.appendChild(bt2);bal2.appendChild(br2);setTimeout(function(){var bf2=br2.querySelector('.ring__fill');if(bf2)bf2.classList.add('is-on');var bv2=br2.querySelector('[data-count]');if(bv2){var tgt=parseFloat(bv2.getAttribute('data-count'));var suf=bv2.getAttribute('data-suffix')||'';var dur=1300;var st=performance.now();(function step(now){var p=Math.min((now-st)/dur,1);bv2.textContent=Math.round(p*tgt)+suf;if(p<1)requestAnimationFrame(step);})(performance.now());}},100);}});
+if(tb)tb.addEventListener('click',function(){var c=document.documentElement.getAttribute('data-theme'),n=c==='light'?'dark':'light';document.documentElement.setAttribute('data-theme',n);localStorage.setItem('ahims-theme',n);/* re-render charts for theme */var cr2=document.getElementById('cover-ring');if(cr2){cr2.innerHTML='';var r2=document.createElement('div');r2.className='ring';A.buildRing(r2,d.overallScore,'var(--c-gold)',220);var t2=document.createElement('div');t2.className='ring__center';t2.innerHTML='<span class="ring__val ring__val--lg" data-count="'+d.overallScore+'" data-suffix="%">0</span><span class="ring__lbl">Overall Index</span>';r2.appendChild(t2);cr2.appendChild(r2);setTimeout(function(){var rf2=r2.querySelector('.ring__fill');if(rf2)rf2.classList.add('is-on');var cv2=r2.querySelector('[data-count]');if(cv2){var tgt=parseFloat(cv2.getAttribute('data-count'));var suf=cv2.getAttribute('data-suffix')||'';var dur=1300;var st=performance.now();(function step(now){var p=Math.min((now-st)/dur,1);cv2.textContent=Math.round(p*tgt)+suf;if(p<1)requestAnimationFrame(step);})(performance.now());}},100);}var rad2=document.getElementById('perf-radar');if(rad2){rad2.innerHTML='';A.buildRadar(rad2,d.domains,400);}var bal2=document.getElementById('balance-ring');if(bal2){bal2.innerHTML='';var br2=document.createElement('div');br2.className='ring';A.buildRing(br2,d.s4.balance_score,'var(--c-teal)',120);var bt2=document.createElement('div');bt2.className='ring__center';bt2.innerHTML='<span class="ring__val ring__val--sm" data-count="'+d.s4.balance_score+'" data-suffix="%">0</span><span class="ring__lbl">Balance</span>';br2.appendChild(bt2);bal2.appendChild(br2);setTimeout(function(){var bf2=br2.querySelector('.ring__fill');if(bf2)bf2.classList.add('is-on');var bv2=br2.querySelector('[data-count]');if(bv2){var tgt=parseFloat(bv2.getAttribute('data-count'));var suf=bv2.getAttribute('data-suffix')||'';var dur=1300;var st=performance.now();(function step(now){var p=Math.min((now-st)/dur,1);bv2.textContent=Math.round(p*tgt)+suf;if(p<1)requestAnimationFrame(step);})(performance.now());}},100);}});
 
 /* Nav dots */
 var secs=document.querySelectorAll('[data-section]'),dotsEl=document.getElementById('nav-dots'),lblEl=document.getElementById('nav-label');
@@ -260,6 +277,10 @@ secs.forEach(function(s){navObs.observe(s);});
 /* Nav bg */
 var navEl=document.getElementById('nav'),covEl=document.getElementById('cover');
 if(navEl&&covEl){var nbo=new IntersectionObserver(function(es){es.forEach(function(e){navEl.classList.toggle('nav--solid',!e.isIntersecting);});},{threshold:.1});nbo.observe(covEl);}
+
+/* Scroll progress bar */
+var scrollBar=document.getElementById('scroll-bar');
+if(scrollBar){window.addEventListener('scroll',function(){var h=document.documentElement.scrollHeight-window.innerHeight;var p=h>0?(window.scrollY/h)*100:0;scrollBar.style.width=p+'%';},{passive:true});}
 
 /* Reveal */
 var rObs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-on');rObs.unobserve(e.target);}});},{threshold:.12});
@@ -288,7 +309,7 @@ var dbWrap=document.getElementById('domain-bars');if(dbWrap)dbObs.observe(dbWrap
 
 /* Cover ring */
 var cr=document.getElementById('cover-ring');
-if(cr){var r=document.createElement('div');r.className='ring';A.buildRing(r,d.overallScore,'var(--gold)',220);var t=document.createElement('div');t.className='ring__center';t.innerHTML='<span class="ring__val ring__val--lg" data-count="'+d.overallScore+'" data-suffix="%">0</span><span class="ring__lbl">Overall Index</span>';r.appendChild(t);cr.appendChild(r);/* trigger ring fill after reveal */var rf=r.querySelector('.ring__fill');if(rf)setTimeout(function(){rf.classList.add('is-on');},600);}
+if(cr){var r=document.createElement('div');r.className='ring';A.buildRing(r,d.overallScore,'var(--c-gold)',220);var t=document.createElement('div');t.className='ring__center';t.innerHTML='<span class="ring__val ring__val--lg" data-count="'+d.overallScore+'" data-suffix="%">0</span><span class="ring__lbl">Overall Index</span>';r.appendChild(t);cr.appendChild(r);/* trigger ring fill after reveal */var rf=r.querySelector('.ring__fill');if(rf)setTimeout(function(){rf.classList.add('is-on');},600);}
 
 /* Abstract Brain */
 var baEl=document.getElementById('brain-abstract');
@@ -298,7 +319,7 @@ if(baEl)A.buildBrainAbstract(baEl,d.domains,400);
 var dbEl=document.getElementById('domain-bars');
 if(dbEl){
   var sorted=d.domains.slice().sort(function(a,b){return b.score-a.score;});
-  var W=1200,H=440,padL=40,padR=40,padT=32,padB=80;
+  var W=1200,H=500,padL=40,padR=40,padT=32,padB=80;
   var usable=W-padL-padR;
   var n=sorted.length;
   var gap=usable/(n-1);
@@ -346,7 +367,7 @@ if(dbEl){
 /* Performance */
 var radEl=document.getElementById('perf-radar');if(radEl)A.buildRadar(radEl,d.domains,500);
 var balEl=document.getElementById('balance-ring');
-if(balEl){var br=document.createElement('div');br.className='ring';A.buildRing(br,d.s4.balance_score,'var(--teal)',120);var bt=document.createElement('div');bt.className='ring__center';bt.innerHTML='<span class="ring__val ring__val--sm" data-count="'+d.s4.balance_score+'" data-suffix="%">0</span><span class="ring__lbl">Balance</span>';br.appendChild(bt);balEl.appendChild(br);}
+if(balEl){var br=document.createElement('div');br.className='ring';A.buildRing(br,d.s4.balance_score,'var(--c-teal)',120);var bt=document.createElement('div');bt.className='ring__center';bt.innerHTML='<span class="ring__val ring__val--sm" data-count="'+d.s4.balance_score+'" data-suffix="%">0</span><span class="ring__lbl">Balance</span>';br.appendChild(bt);balEl.appendChild(br);}
 var lolEl=document.getElementById('perf-lollipop');if(lolEl)A.buildLollipop(lolEl,d.s4.domain_ranking,d.s4.avg_score);
 
 /* Explorer */
@@ -381,7 +402,7 @@ if(archSankey&&typeof echarts!=='undefined'){
   sankeyChart.setOption({
     backgroundColor:'transparent',
     tooltip:{trigger:'item',triggerOn:'mousemove',formatter:function(p){if(p.dataType==='edge')return p.data.source+' → '+p.data.target+'<br/>Strength: '+Math.round(p.data.value)+'%';return p.name;}},
-    series:[{type:'sankey',layout:'none',emphasis:{focus:'adjacency'},nodeAlign:'justify',layoutIterations:32,orient:'horizontal',nodeWidth:16,nodeGap:12,label:{show:true,color:'var(--text-2)',fontFamily:'var(--ff-mono)',fontSize:11},lineStyle:{color:'gradient',curveness:0.5,opacity:0.35},data:sankeyNodes,links:sankeyLinks}]
+    series:[{type:'sankey',layout:'none',emphasis:{focus:'adjacency'},nodeAlign:'justify',layoutIterations:32,orient:'horizontal',nodeWidth:24,nodeGap:14,label:{show:true,color:'var(--c-text-2)',fontFamily:'var(--ff-mono)',fontSize:12},lineStyle:{color:'gradient',curveness:0.5,opacity:0.35},data:sankeyNodes,links:sankeyLinks}]
   });
 
   window.addEventListener('resize',function(){sankeyChart.resize();});
@@ -431,10 +452,6 @@ if(fcEl){
 var lbEl=document.getElementById('labs-flow');
 if(lbEl){var ARROW='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14m0 0l-6-6m6 6l6-6"/></svg>';d.s12.forEach(function(lab){var c=document.createElement('div');c.className='lcard reveal';c.style.setProperty('--c',lab.color);c.innerHTML='<div class="lcard__rank">'+lab.rank+'</div><div class="lcard__body"><span class="pill" style="background:'+lab.color+'">'+lab.domain_name+'</span><h3 class="lcard__title">'+lab.lab_name+'</h3><div class="lcard__flow"><div class="lcard__step"><span class="lcard__step-lbl">Activity</span><p>'+lab.lab_description+'</p></div><div class="lcard__arrow">'+ARROW+'</div><div class="lcard__step"><span class="lcard__step-lbl">Benefit</span><p>'+lab.expected_benefit+'</p></div><div class="lcard__arrow">'+ARROW+'</div><div class="lcard__step"><span class="lcard__step-lbl">Brain</span><p>'+lab.brain_function+'</p></div></div></div>';lbEl.appendChild(c);});}
 
-/* Appendix — Brain Regions grid */
-var brEl=document.getElementById('app-brain-grid');
-if(brEl){d.glossary.forEach(function(g){var c=document.createElement('div');c.className='abcard';c.innerHTML='<div class="abcard__img"><img src="'+g.brain_image+'" alt="'+g.name+' brain region" loading="lazy"></div><div class="abcard__accent" style="background:'+g.color+'"></div><div class="abcard__body"><span class="abcard__name">'+g.name+'</span><span class="abcard__region">'+g.brain_region+'</span><p class="abcard__desc">'+g.description+'</p></div>';brEl.appendChild(c);});}
-
 /* Appendix — Glossary */
 var glEl=document.getElementById('app-glossary');
 if(glEl){var gh='';d.glossary.forEach(function(g){gh+='<div class="agloss"><span class="agloss__dot" style="background:'+g.color+'"></span><div class="agloss__text"><span class="agloss__name">'+g.name+'</span><p class="agloss__desc">'+g.description+'</p></div></div>';});glEl.innerHTML=gh;}
@@ -459,6 +476,26 @@ document.querySelectorAll('.stagger').forEach(function(el){
     (function(c,j){setTimeout(function(){c.classList.add('is-on');},j*70);})(k[i],i);
   }}
 });
+})();
+</script>
+<script>
+/* Parallax — reveal full mind abstract image as user scrolls */
+(function(){
+var bg=document.getElementById('mind-bg');
+if(!bg)return;
+var ticking=false;
+function update(){
+  var sy=window.scrollY;
+  var maxScroll=document.documentElement.scrollHeight-window.innerHeight;
+  if(maxScroll<=0)return;
+  var progress=sy/maxScroll;
+  var maxTranslate=-(window.innerHeight*1.5);
+  bg.style.transform='translateY('+progress*maxTranslate+'px)';
+  ticking=false;
+}
+window.addEventListener('scroll',function(){
+  if(!ticking){requestAnimationFrame(update);ticking=true;}
+},{passive:true});
 })();
 </script>
 </body>

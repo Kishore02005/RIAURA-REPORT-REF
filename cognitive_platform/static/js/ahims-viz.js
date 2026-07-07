@@ -25,7 +25,7 @@
 
     var track = el('circle', {
       cx: size/2, cy: size/2, r: r,
-      fill: 'none', stroke: 'var(--border)', 'stroke-width': stroke
+      fill: 'none', stroke: 'var(--c-border)', 'stroke-width': stroke
     });
     svg.appendChild(track);
 
@@ -81,8 +81,8 @@
     /* defs — gradient fill for polygon */
     var defs = el('defs', {});
     var rg = el('radialGradient', { id: gradId, cx: '50%', cy: '50%', r: '50%' });
-    rg.appendChild(el('stop', { offset: '0%', 'stop-color': 'var(--gold)', 'stop-opacity': '0.3' }));
-    rg.appendChild(el('stop', { offset: '100%', 'stop-color': 'var(--gold)', 'stop-opacity': '0.05' }));
+    rg.appendChild(el('stop', { offset: '0%', 'stop-color': 'var(--c-gold)', 'stop-opacity': '0.3' }));
+    rg.appendChild(el('stop', { offset: '100%', 'stop-color': 'var(--c-gold)', 'stop-opacity': '0.05' }));
     defs.appendChild(rg); svg.appendChild(defs);
 
     /* faint concentric guides */
@@ -198,13 +198,13 @@
     /* simplified brain outline */
     var brainPath = 'M200,40 C280,40 340,100 340,180 C340,260 280,320 200,320 C120,320 60,260 60,180 C60,100 120,40 200,40 Z';
     svg.appendChild(el('path', {
-      d: brainPath, fill: 'none', stroke: 'var(--border-dim)', 'stroke-width': 1.5, opacity: 0.6
+      d: brainPath, fill: 'none', stroke: 'var(--c-border)', 'stroke-width': 1.5, opacity: 0.6
     }));
 
     /* midline */
     svg.appendChild(el('line', {
       x1: 200, y1: 50, x2: 200, y2: 310,
-      stroke: 'var(--border)', 'stroke-width': 0.5, 'stroke-dasharray': '4,4'
+      stroke: 'var(--c-border)', 'stroke-width': 0.5, 'stroke-dasharray': '4,4'
     }));
 
     /* domain positions around the brain */
@@ -239,15 +239,15 @@
       /* label */
       var txt = el('text', {
         x: pos.x, y: pos.y + dotR + 14, 'text-anchor': 'middle',
-        fill: 'var(--text-dim)', 'font-family': 'var(--font-mono)', 'font-size': '9'
+        fill: 'var(--c-text-2)', 'font-family': 'var(--ff-mono)', 'font-size': '10'
       });
-      txt.textContent = d.name.substring(0, 8);
+      txt.textContent = d.name;
       svg.appendChild(txt);
 
       /* score */
       var scoreTxt = el('text', {
         x: pos.x, y: pos.y + 3, 'text-anchor': 'middle', 'dominant-baseline': 'middle',
-        fill: '#fff', 'font-family': 'var(--font-display)', 'font-size': '9', 'font-weight': '600'
+        fill: '#fff', 'font-family': 'var(--ff-display)', 'font-size': '10', 'font-weight': '600'
       });
       scoreTxt.textContent = Math.round(d.score);
       svg.appendChild(scoreTxt);
@@ -305,7 +305,7 @@
       var mx = (from.x + to.x) / 2;
       var path = 'M' + from.x + ',' + from.y + ' C' + mx + ',' + from.y + ' ' + mx + ',' + to.y + ' ' + to.x + ',' + to.y;
       svg.appendChild(el('path', {
-        d: path, fill: 'none', stroke: 'var(--gold)', 'stroke-width': sw, opacity: opacity, 'stroke-linecap': 'round'
+        d: path, fill: 'none', stroke: 'var(--c-gold)', 'stroke-width': sw, opacity: opacity, 'stroke-linecap': 'round'
       }));
     });
 
@@ -316,13 +316,13 @@
       var rw = 70, rh = 24;
       svg.appendChild(el('rect', {
         x: pos.x - rw/2, y: pos.y - rh/2, width: rw, height: rh,
-        fill: 'var(--surface-raised)', stroke: 'var(--border)', 'stroke-width': 1, rx: 4, ry: 4
+        fill: 'var(--c-surface)', stroke: 'var(--c-border)', 'stroke-width': 1, rx: 4, ry: 4
       }));
       var txt = el('text', {
         x: pos.x, y: pos.y + 1, 'text-anchor': 'middle', 'dominant-baseline': 'middle',
-        fill: 'var(--text)', 'font-family': 'var(--font-mono)', 'font-size': '9'
+        fill: 'var(--c-text)', 'font-family': 'var(--ff-mono)', 'font-size': '10'
       });
-      txt.textContent = name.length > 10 ? name.substring(0, 9) + '.' : name;
+      txt.textContent = name;
       svg.appendChild(txt);
     });
 
@@ -364,7 +364,7 @@
     /* background ring */
     svg.appendChild(el('circle', {
       cx: cx, cy: cy, r: midR,
-      fill: 'none', stroke: 'var(--border)', 'stroke-width': outerR - innerR, opacity: 0.08
+      fill: 'none', stroke: 'var(--c-border)', 'stroke-width': outerR - innerR, opacity: 0.08
     }));
 
     /* score segments + collect midpoints for progress line */
@@ -412,7 +412,7 @@
 
       var txt = el('text', {
         x: lx, y: ly, 'text-anchor': anchor, 'dominant-baseline': 'middle',
-        fill: d.color, 'font-family': 'var(--ff-mono)', 'font-size': '11', opacity: 0
+        fill: d.color, 'font-family': 'var(--ff-mono)', 'font-size': '12', opacity: 0
       });
       txt.textContent = d.name;
       txt.classList.add('fp-lbl');
@@ -444,12 +444,12 @@
 
     /* center score */
     svg.appendChild(el('circle', {
-      cx: cx, cy: cy, r: innerR - 4, fill: 'var(--bg)', opacity: 0
+      cx: cx, cy: cy, r: innerR - 4, fill: 'var(--c-bg)', opacity: 0
     })).classList.add('fp-center-bg');
 
     var scoreTxt = el('text', {
       x: cx, y: cy - 6, 'text-anchor': 'middle', 'dominant-baseline': 'middle',
-      fill: 'var(--text)', 'font-family': 'var(--ff-display)', 'font-size': '32', 'font-weight': '700', opacity: 0
+      fill: 'var(--c-text)', 'font-family': 'var(--ff-display)', 'font-size': '32', 'font-weight': '700', opacity: 0
     });
     scoreTxt.textContent = Math.round(total / n);
     scoreTxt.classList.add('fp-center');
@@ -457,7 +457,7 @@
 
     var subTxt = el('text', {
       x: cx, y: cy + 18, 'text-anchor': 'middle', 'dominant-baseline': 'middle',
-      fill: 'var(--text-3)', 'font-family': 'var(--ff-mono)', 'font-size': '10', opacity: 0
+      fill: 'var(--c-text-3)', 'font-family': 'var(--ff-mono)', 'font-size': '11', opacity: 0
     });
     subTxt.textContent = 'overall';
     subTxt.classList.add('fp-center');

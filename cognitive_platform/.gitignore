@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+*.pyo
+.check_app.js
+check_app.js
+check_state.py
+debug_appendix.py
+brain_point_cloud.glb
+static/assets/Human Brain Abstract.png
+static/assets/Human Mind Abstract.png
