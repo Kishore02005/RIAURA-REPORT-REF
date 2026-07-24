@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <title>RIAURA™ — Cognitive Intelligence Passport</title>
+  <script>(function(){var s=localStorage.getItem('riaura-theme');if(s)document.documentElement.setAttribute('data-theme',s);})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/passport_v2.css?v=2.0">
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+</head>
+<body>
+
+<a href="#profile" class="skip">Skip to profile</a>
+
+<!-- NAVIGATION -->
+<nav class="nav" id="nav">
+  <div class="nav__inner">
+    <div class="nav__brand">RIAURA</div>
+    <div class="nav__dots" id="nav-dots"></div>
+    <button class="nav__theme-btn" id="theme-btn" type="button" aria-label="Toggle theme">
+      <svg class="theme-btn__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg>
+      <svg class="theme-btn__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- SECTION 1: COVER -->
+<section id="cover" class="sec sec--cover" data-section="cover" data-label="Identity">
+  <div class="scroll-bar" id="scroll-bar"></div>
+  <div class="cover">
+    <div class="cover__left">
+      <span class="cover__eyebrow reveal">RIAURA Cognitive Passport</span>
+      <h1 class="cover__name reveal">{{ assessment.participant_name }}</h1>
+      <p class="cover__desc reveal">Your cognitive profile across 8 key domains.</p>
+      <div class="cover__meta reveal">
+        <span>{{ assessment.assessment_date }}</span>
+        <span class="dot">•</span>
+        <span>{{ assessment.assessment_id }}</span>
+      </div>
+    </div>
+    <div class="cover__right">
+      <div id="cover-ring" class="cover-ring reveal"></div>
+      <div class="cover__tier reveal">{{ assessment.tier_label }}</div>
+    </div>
+  </div>
+  <div class="scroll-hint" aria-hidden="true">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 13l5 5 5-5M7 7l5 5 5-5" opacity=".6"/></svg>
+  </div>
+</section>
+
+<!-- SECTION 2: COGNITIVE PROFILE (Hero) -->
+<section id="profile" class="sec sec--alt" data-section="profile" data-label="Your Profile">
+  <div class="sec__inner">
+    <span class="sec__eyebrow reveal">Cognitive Profile</span>
+    <h2 class="sec__title reveal">Your cognitive fingerprint.</h2>
+    
+    <!-- DOMAIN BARS: Single Canonical Visualization -->
+    <div class="domain-profile reveal" id="domain-bars"></div>
+    
+    <!-- NARRATIVE -->
+    <div class="profile-narrative reveal">
+      <h3 class="profile-narrative__archetype">{{ profile.archetype }}</h3>
+      <p class="profile-narrative__text">{{ profile.narrative }}</p>
+    </div>
+    
+    <!-- QUICK STATS -->
+    <div class="profile-stats reveal">
+      <div class="stat-card">
+        <span class="stat-label">Strongest</span>
+        <span class="stat-value">{{ performance.top_3_domains[0].name }}</span>
+        <span class="stat-score">{{ performance.top_3_domains[0].percentile | int }}th percentile</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Development Area</span>
+        <span class="stat-value">{{ performance.bottom_3_domains[0].name }}</span>
+        <span class="stat-score">{{ performance.bottom_3_domains[0].percentile | int }}th percentile</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: PERFORMANCE ANALYSIS -->
+<section id="performance" class="sec" data-section="performance" data-label="Performance">
+  <div class="sec__inner">
+    <span class="sec__eyebrow reveal">Performance Analysis</span>
+    <h2 class="sec__title reveal">Your cognitive balance.</h2>
+    
+    <div class="performance-grid reveal">
+      <!-- Balance Ring -->
+      <div class="balance-container">
+        <div id="balance-ring" class="balance-ring"></div>
+        <div class="balance-info">
+          <span class="balance-score">{{ performance.balance_score | int }}</span>
+          <span class="balance-label">Balance</span>
+          <p class="balance-desc">{{ performance.balance_interpretation }}</p>
+        </div>
+      </div>
+      
+      <!-- Key Insights -->
+      <div class="insights-container">
+        <div class="insight-card reveal">
+          <h4>Top Strengths</h4>
+          <ul>
+          {% for domain in performance.top_3_domains %}
+            <li><strong>{{ domain.name }}</strong> — {{ domain.percentile | int }}th percentile</li>
+          {% endfor %}
+          </ul>
+        </div>
+        <div class="insight-card reveal">
+          <h4>Growth Opportunities</h4>
+          <ul>
+          {% for domain in performance.bottom_3_domains %}
+            <li><strong>{{ domain.name }}</strong> — {{ domain.percentile | int }}th percentile</li>
+          {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: NEURAL SYSTEMS -->
+<section id="neural-systems" class="sec sec--alt" data-section="neural_systems" data-label="Neuroscience">
+  <div class="sec__inner">
+    <span class="sec__eyebrow reveal">Neural Systems</span>
+    <h2 class="sec__title reveal">How your brain produces this profile.</h2>
+    
+    <div class="neural-grid stagger">
+    {% for system in neural_systems %}
+      <div class="neural-card reveal">
+        <h3>{{ system.name }}</h3>
+        <p class="neural-desc">{{ system.description }}</p>
+        <p class="neural-your-profile">{{ system.your_profile }}</p>
+      </div>
+    {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5: REAL-WORLD APPLICATION -->
+<section id="real-world" class="sec" data-section="real_world" data-label="Application">
+  <div class="sec__inner">
+    <span class="sec__eyebrow reveal">Real-World Application</span>
+    <h2 class="sec__title reveal">How it shows up daily.</h2>
+    
+    <div class="context-grid stagger">
+    {% for context in real_world %}
+      <div class="context-card reveal">
+        <div class="context-header">
+          <h3 class="context-title">{{ context.context | title }}</h3>
+        </div>
+        <div class="context-content">
+          <div class="context-section">
+            <h4>Strengths</h4>
+            <ul>
+            {% for strength in context.strengths %}
+              <li>{{ strength }}</li>
+            {% endfor %}
+            </ul>
+          </div>
+          <div class="context-section">
+            <h4>Opportunities</h4>
+            <ul>
+            {% for opp in context.opportunities %}
+              <li>{{ opp }}</li>
+            {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6: GROWTH PATHWAY -->
+<section id="growth" class="sec sec--alt" data-section="growth_pathway" data-label="Growth">
+  <div class="sec__inner">
+    <span class="sec__eyebrow reveal">Growth Pathway</span>
+    <h2 class="sec__title reveal">What should you do next?</h2>
+    <p class="sec__sub reveal">{{ growth_pathway.strategy }}</p>
+    
+    <!-- Prioritized Areas -->
+    <div class="priorities reveal">
+    {% for priority in growth_pathway.priorities %}
+      <div class="priority-card">
+        <div class="priority-rank">{{ priority.rank }}</div>
+        <div class="priority-content">
+          <h3>{{ priority.domain_name }}</h3>
+          <p>{{ priority.why_it_matters }}</p>
+          <div class="priority-meta">
+            <span class="badge">{{ priority.timeline }}</span>
+            <span class="badge badge--gain">+{{ priority.expected_gain | int }} percentile</span>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+    </div>
+    
+    <!-- Phases -->
+    <div class="phases-timeline reveal">
+      <h3>Your Growth Timeline</h3>
+    {% for phase in growth_pathway.phases %}
+      <div class="phase">
+        <div class="phase-number">Phase {{ phase.phase_number }}</div>
+        <div class="phase-content">
+          <h4>{{ phase.name }}</h4>
+          <p class="phase-duration">{{ phase.duration }}</p>
+          <ul class="phase-actions">
+          {% for action in phase.key_actions %}
+            <li>{{ action }}</li>
+          {% endfor %}
+          </ul>
+        </div>
+      </div>
+    {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 7: APPENDIX -->
+<section id="appendix" class="sec" data-section="appendix" data-label="Reference">
+  <div class="sec__inner">
+    <span class="sec__eyebrow reveal">Appendix & Reference</span>
+    <h2 class="sec__title reveal">How to interpret this report.</h2>
+    
+    <!-- Domain Glossary -->
+    <div class="glossary reveal">
+      <h3>Domain Definitions</h3>
+    {% for domain in domains %}
+      <div class="glossary-item">
+        <h4>{{ domain.name }}</h4>
+        <p>{{ domain.classification | title }} performance ({{ domain.percentile | int }}th percentile)</p>
+      </div>
+    {% endfor %}
+    </div>
+    
+    <!-- Assessment Info -->
+    <div class="assessment-info reveal">
+      <h3>Assessment Information</h3>
+      <p><strong>Framework:</strong> {{ assessment.assessment_framework }}</p>
+      <p><strong>Validity:</strong> {{ assessment.validity_info }}</p>
+      <p><strong>Reliability:</strong> {{ assessment.reliability_info }}</p>
+      <p><strong>Limitations:</strong> {{ assessment.limitations }}</p>
+    </div>
+    
+    <!-- Percentile Guide -->
+    <div class="percentile-guide reveal">
+      <h3>Understanding Percentiles</h3>
+      <p>A percentile rank indicates how your score compares to others. For example, 75th percentile means you performed as well as or better than 75% of assessments.</p>
+      <div class="percentile-scale">
+        <div class="scale-item"><span class="scale-label">85+</span><span class="scale-desc">Very High</span></div>
+        <div class="scale-item"><span class="scale-label">70-84</span><span class="scale-desc">High</span></div>
+        <div class="scale-item"><span class="scale-label">60-69</span><span class="scale-desc">Above Average</span></div>
+        <div class="scale-item"><span class="scale-label">40-59</span><span class="scale-desc">Average</span></div>
+        <div class="scale-item"><span class="scale-label">25-39</span><span class="scale-desc">Below Average</span></div>
+        <div class="scale-item"><span class="scale-label"><25</span><span class="scale-desc">Low</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Sticky Footer -->
+<div class="sticky-footer">
+  <button class="btn btn--secondary" id="share-btn" aria-label="Share">Share Report</button>
+  <button class="btn btn--primary" id="export-btn" aria-label="Export">Export as PDF</button>
+</div>
+
+<script src="/static/js/passport_v2.js?v=2.0"></script>
+</body>
+</html>
