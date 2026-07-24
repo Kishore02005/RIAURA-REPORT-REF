@@ -1,0 +1,100 @@
+{
+  "domains": [
+    {
+      "id": "processing-speed",
+      "name": "Processing Speed",
+      "color": "#F5A623",
+      "icon": "lightning",
+      "description": "Speed and efficiency of cognitive processing; ability to quickly analyze complex information",
+      "neural_systems": ["attention", "executive_function"],
+      "real_world_contexts": ["work", "learning", "problem_solving"],
+      "interpretation_template": "High processing speed means you think quickly and manage complexity well. You excel in fast-paced environments and can rapidly analyze multiple data sources.",
+      "strengths_description": "Quick analysis, rapid decision-making, efficient information handling",
+      "development_prompt": "Processing speed is already a strength. Consider leveraging it to develop deeper analytical insights."
+    },
+    {
+      "id": "memory",
+      "name": "Memory",
+      "color": "#1F9E96",
+      "icon": "archive",
+      "description": "Capacity to encode, store, and retrieve information; working and long-term memory",
+      "neural_systems": ["memory", "learning"],
+      "real_world_contexts": ["learning", "work", "relationships"],
+      "interpretation_template": "Your memory capacity allows you to retain and retrieve information effectively. You can hold and work with complex information over time.",
+      "strengths_description": "Information retention, pattern recall, knowledge accumulation",
+      "development_prompt": "Strengthen memory through spaced repetition and active recall techniques."
+    },
+    {
+      "id": "attention",
+      "name": "Attention",
+      "color": "#3D63DD",
+      "icon": "focus",
+      "description": "Ability to focus on relevant information, sustain attention, and manage distractions",
+      "neural_systems": ["attention"],
+      "real_world_contexts": ["work", "learning"],
+      "interpretation_template": "Your attention capacity allows you to focus deeply and sustain concentration on complex tasks.",
+      "strengths_description": "Focus consistency, distraction management, sustained concentration",
+      "development_prompt": "Enhance attention through mindfulness practices and optimized work environment design."
+    },
+    {
+      "id": "reasoning",
+      "name": "Reasoning",
+      "color": "#7C5CFC",
+      "icon": "brain",
+      "description": "Ability to think logically, solve problems systematically, and understand abstract concepts",
+      "neural_systems": ["executive_function"],
+      "real_world_contexts": ["work", "problem_solving"],
+      "interpretation_template": "Strong reasoning allows you to understand complex relationships and solve problems systematically.",
+      "strengths_description": "Logical thinking, systematic problem-solving, abstract understanding",
+      "development_prompt": "Deepen reasoning through exposure to diverse problem types and cross-disciplinary learning."
+    },
+    {
+      "id": "decision-integrity",
+      "name": "Decision Integrity",
+      "color": "#2E8B57",
+      "icon": "checkmark",
+      "description": "Quality of decision-making; ability to weigh options and make sound judgments",
+      "neural_systems": ["executive_function", "attention"],
+      "real_world_contexts": ["work", "learning", "relationships"],
+      "interpretation_template": "Your decision-making is sound and well-reasoned. You consider options carefully before choosing.",
+      "strengths_description": "Thoughtful analysis, balanced judgment, quality decisions",
+      "development_prompt": "Improve decision integrity by considering longer timeframes and broader contexts."
+    },
+    {
+      "id": "emotional-intelligence",
+      "name": "Emotional Intelligence",
+      "color": "#E8607A",
+      "icon": "heart",
+      "description": "Ability to recognize, understand, and manage emotions in self and others",
+      "neural_systems": ["social_cognition"],
+      "real_world_contexts": ["relationships", "work"],
+      "interpretation_template": "Your emotional intelligence allows you to navigate interpersonal situations with awareness and sensitivity.",
+      "strengths_description": "Social awareness, empathy, interpersonal sensitivity",
+      "development_prompt": "Strengthen emotional intelligence through active listening and perspective-taking practices."
+    },
+    {
+      "id": "originality",
+      "name": "Originality",
+      "color": "#F0654A",
+      "icon": "sparkles",
+      "description": "Creative thinking; ability to generate novel ideas and make original connections",
+      "neural_systems": ["executive_function"],
+      "real_world_contexts": ["work", "problem_solving"],
+      "interpretation_template": "You generate novel ideas and make creative connections. You approach problems from unique angles.",
+      "strengths_description": "Creative thinking, novel idea generation, original approaches",
+      "development_prompt": "Develop originality through exposure to diverse fields and creative problem-solving exercises."
+    },
+    {
+      "id": "metacognition",
+      "name": "Metacognition",
+      "color": "#4B3F72",
+      "icon": "mirror",
+      "description": "Understanding of how you think and learn; ability to reflect on and manage cognitive processes",
+      "neural_systems": ["executive_function", "attention"],
+      "real_world_contexts": ["learning", "work"],
+      "interpretation_template": "Strong metacognition means you understand how you learn and think. You can reflect on and adjust your strategies.",
+      "strengths_description": "Self-awareness, learning strategy awareness, cognitive flexibility",
+      "development_prompt": "Deepen metacognition through structured reflection and learning journal practices."
+    }
+  ]
+}

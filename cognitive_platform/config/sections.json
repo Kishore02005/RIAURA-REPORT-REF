@@ -1,0 +1,74 @@
+{
+  "sections": [
+    {
+      "id": "cover",
+      "name": "Cover",
+      "order": 1,
+      "label": "Who am I?",
+      "description": "Identity and overall cognitive tier",
+      "components": ["hero_ring", "participant_info", "assessment_metadata"],
+      "required": true,
+      "scrollable": false
+    },
+    {
+      "id": "profile",
+      "name": "Cognitive Profile",
+      "order": 2,
+      "label": "Your Cognitive Profile",
+      "description": "Canonical representation of all 8 domains with percentiles and narrative interpretation",
+      "components": ["domain_bars", "profile_narrative", "pattern_callout", "quick_stats"],
+      "required": true,
+      "scrollable": true
+    },
+    {
+      "id": "performance",
+      "name": "Performance Analysis",
+      "order": 3,
+      "label": "How did I perform?",
+      "description": "Balance score and key strength/development areas",
+      "components": ["balance_ring", "balance_interpretation", "strengths_highlight", "development_highlight"],
+      "required": true,
+      "scrollable": true
+    },
+    {
+      "id": "neural_systems",
+      "name": "Neural Systems",
+      "order": 4,
+      "label": "Why did I perform this way?",
+      "description": "Simplified neuroscience explaining functional brain systems",
+      "components": ["neural_system_cards", "system_interpretation"],
+      "required": false,
+      "scrollable": true
+    },
+    {
+      "id": "real_world",
+      "name": "Real-World Application",
+      "order": 5,
+      "label": "What does it mean?",
+      "description": "How cognitive profile shows up in daily life across contexts",
+      "components": ["context_cards", "strength_challenge_combinations"],
+      "required": true,
+      "scrollable": true
+    },
+    {
+      "id": "growth_pathway",
+      "name": "Growth Pathway",
+      "order": 6,
+      "label": "What should I do next?",
+      "description": "Prioritized development areas with personalized labs and timeline",
+      "components": ["priority_areas", "labs_timeline", "success_indicators"],
+      "required": true,
+      "scrollable": true
+    },
+    {
+      "id": "appendix",
+      "name": "Appendix & Reference",
+      "order": 7,
+      "label": "How should I interpret this?",
+      "description": "Domain glossary, assessment validity, interpretation guide",
+      "components": ["domain_glossary", "assessment_info", "color_system", "disclaimers"],
+      "required": true,
+      "scrollable": true
+    }
+  ]
+}
